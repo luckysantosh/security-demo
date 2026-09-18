@@ -290,9 +290,8 @@
   const completed = new Set();
 
   form.addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    login.style.display = "none";
+trainingLog.textContent =
+  "Training event recorded locally: login simulation attempted. Password was not saved.";
     result.style.display = "block";
   });
 
