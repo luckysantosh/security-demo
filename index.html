@@ -19,7 +19,7 @@
     }
 
     .card {
-      width: min(420px, 100%);
+      width: min(440px, 100%);
       padding: 28px;
       background: white;
       border: 1px solid #ddd;
@@ -39,8 +39,12 @@
     }
 
     h1 {
-      margin: 28px 0 12px;
+      margin: 26px 0 12px;
       font-size: 34px;
+    }
+
+    h2 {
+      margin-top: 0;
     }
 
     p {
@@ -67,8 +71,11 @@
       font-weight: 700;
     }
 
-    #result {
+    .hidden {
       display: none;
+    }
+
+    .result {
       margin-top: 20px;
       padding: 20px;
       border-radius: 14px;
@@ -79,10 +86,11 @@
 
     .warning {
       margin-top: 18px;
-      padding: 16px;
+      padding: 18px;
       background: #fff3cd;
       border-radius: 12px;
       color: #664d03;
+      text-align: left;
     }
 
     ul {
@@ -90,86 +98,142 @@
       line-height: 1.6;
     }
 
+    .exercise {
+      margin-top: 20px;
+      padding: 18px;
+      background: #f1f5f9;
+      border-radius: 14px;
+      text-align: left;
+    }
+
+    .url-example {
+      display: block;
+      margin: 12px 0;
+      padding: 12px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 9px;
+      word-break: break-all;
+      font-family: monospace;
+      font-size: 14px;
+    }
+
     .again {
       background: #555;
-      margin-top: 16px;
+    }
+
+    .notice {
+      margin-top: 18px;
+      font-size: 13px;
+      color: #666;
     }
   </style>
 </head>
 
 <body>
-  <main class="card">
 
-    <div class="badge">SECURITY AWARENESS DEMO</div>
+<main class="card">
 
-    <h1>Fictional Login</h1>
+  <div class="badge">SECURITY AWARENESS DEMO</div>
+
+  <h1>Fictional Login</h1>
+
+  <p>
+    This is a controlled security-awareness simulation.
+    Use dummy information only.
+  </p>
+
+  <form id="demo">
+    <input
+      type="text"
+      placeholder="Demo username"
+      autocomplete="off"
+    >
+
+    <input
+      type="password"
+      placeholder="Demo password"
+      autocomplete="off"
+    >
+
+    <button type="submit">Sign in</button>
+  </form>
+
+  <section id="result" class="result hidden">
+
+    <h2>Simulation complete.</h2>
 
     <p>
-      This is a controlled security-awareness simulation.
-      Use dummy information only.
+      This demonstration did not transmit or store the information
+      entered into the form.
     </p>
 
-    <form id="demo">
-      <input
-        type="text"
-        placeholder="Demo username"
-        autocomplete="off"
-      >
+    <div class="warning">
+      <strong>Phishing red flags to check:</strong>
 
-      <input
-        type="password"
-        placeholder="Demo password"
-        autocomplete="off"
-      >
-
-      <button type="submit">Sign in</button>
-    </form>
-
-    <div id="result">
-      <h2>Simulation complete.</h2>
-
-      <p>
-        This demonstration did not transmit or store the information
-        entered into the form.
-      </p>
-
-      <div class="warning">
-        <strong>Phishing red flags to check:</strong>
-
-        <ul>
-          <li>Check the website address carefully.</li>
-          <li>Be cautious with unexpected login requests.</li>
-          <li>Watch for urgency or threats.</li>
-          <li>Never share passwords or verification codes.</li>
-          <li>When unsure, open the service using its official app or website.</li>
-        </ul>
-      </div>
-
-      <button class="again" type="button" id="again">
-        Try Simulation Again
-      </button>
+      <ul>
+        <li>Check the website address carefully.</li>
+        <li>Be cautious with unexpected login requests.</li>
+        <li>Watch for urgency or threats.</li>
+        <li>Never share passwords or verification codes.</li>
+        <li>When unsure, use the service's official app or website.</li>
+      </ul>
     </div>
 
-  </main>
+    <div class="exercise">
+      <h3>URL Awareness Exercise</h3>
 
-  <script>
-    const form = document.querySelector("#demo");
-    const result = document.querySelector("#result");
-    const again = document.querySelector("#again");
+      <p>
+        Before entering credentials, identify the actual domain
+        in the address.
+      </p>
 
-    form.addEventListener("submit", function(event) {
-      event.preventDefault();
-      form.style.display = "none";
-      result.style.display = "block";
-    });
+      <span class="url-example">
+        https://example.com/account/login
+      </span>
 
-    again.addEventListener("click", function() {
-      result.style.display = "none";
-      form.style.display = "block";
-      form.reset();
-    });
-  </script>
+      <p>
+        In this example, <strong>example.com</strong> is the domain.
+        The rest is the path.
+      </p>
+
+      <p>
+        Don't assume a familiar-looking page is legitimate just
+        because it uses HTTPS or looks professional.
+      </p>
+    </div>
+
+    <button class="again" type="button" id="again">
+      Try Simulation Again
+    </button>
+
+    <div class="notice">
+      Training demo only. No credentials are collected,
+      transmitted, or stored.
+    </div>
+
+  </section>
+
+</main>
+
+<script>
+  const form = document.querySelector("#demo");
+  const result = document.querySelector("#result");
+  const again = document.querySelector("#again");
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    form.classList.add("hidden");
+    result.classList.remove("hidden");
+  });
+
+  again.addEventListener("click", function() {
+    result.classList.add("hidden");
+    form.classList.remove("hidden");
+    form.reset();
+  });
+</script>
 
 </body>
 </html>
-      
