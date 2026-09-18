@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -7,59 +7,55 @@
 <title>Social Media Security Training</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
   margin:0;
-  min-height:100vh;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  background:linear-gradient(135deg,#fdf2f8,#fce7f3,#ede9fe);
+  background:#fafafa;
   color:#262626;
-  padding:20px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 }
 
-.wrap{
+/* =========================
+   LOGIN
+========================= */
+
+#loginPage{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:linear-gradient(135deg,#fdf2f8,#ede9fe);
+}
+
+.login-card{
   width:100%;
   max-width:390px;
-  margin:auto;
-}
-
-.badge{
-  text-align:center;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:1px;
-  color:#777;
-  margin:8px 0 15px;
-}
-
-.card{
-  background:#fff;
+  background:white;
   border:1px solid #ddd;
-  padding:32px 28px;
-  box-shadow:0 8px 30px rgba(0,0,0,.08);
+  padding:35px 28px;
+  box-shadow:0 10px 35px rgba(0,0,0,.08);
 }
 
 .logo{
   text-align:center;
   font-family:cursive;
-  font-size:40px;
-  font-weight:700;
-  margin-bottom:8px;
+  font-size:42px;
+  font-weight:bold;
+  margin-bottom:10px;
 }
 
-.demo-label{
+.training{
   text-align:center;
   font-size:11px;
   color:#777;
-  margin-bottom:22px;
+  margin-bottom:25px;
 }
 
 input{
   width:100%;
-  height:44px;
+  height:45px;
   margin-bottom:9px;
   padding:0 12px;
   border:1px solid #ddd;
@@ -68,471 +64,393 @@ input{
   outline:none;
 }
 
-input:focus{
-  border-color:#aaa;
-}
-
 .password-box{
   position:relative;
 }
 
 .password-box input{
-  padding-right:65px;
+  padding-right:60px;
 }
 
 .show{
   position:absolute;
   right:5px;
   top:0;
-  height:44px;
+  height:45px;
   border:0;
   background:none;
-  font-weight:700;
+  font-weight:bold;
   cursor:pointer;
 }
 
-.login{
+.login-btn{
   width:100%;
+  margin-top:5px;
+  padding:12px;
   border:0;
   border-radius:7px;
-  padding:12px;
-  margin-top:5px;
-  background:linear-gradient(90deg,#833ab4,#e1306c,#fd1d1d,#f77737);
   color:white;
-  font-weight:700;
+  font-weight:bold;
   cursor:pointer;
+  background:linear-gradient(
+    90deg,
+    #833ab4,
+    #e1306c,
+    #fd1d1d,
+    #f77737
+  );
 }
 
 .notice{
   margin-top:18px;
   padding:12px;
-  border-radius:8px;
   background:#fff7ed;
-  color:#7c2d12;
+  border-radius:8px;
   font-size:11px;
+  line-height:1.5;
+  color:#7c2d12;
+}
+
+
+/* =========================
+   SOCIAL APP
+========================= */
+
+#app{
+  display:none;
+  min-height:100vh;
+  background:#fafafa;
+}
+
+.topbar{
+  height:60px;
+  background:white;
+  border-bottom:1px solid #ddd;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.top-logo{
+  font-family:cursive;
+  font-size:27px;
+  font-weight:bold;
+}
+
+.top-icons{
+  display:flex;
+  gap:18px;
+  font-size:23px;
+}
+
+.app-container{
+  width:100%;
+  max-width:600px;
+  margin:auto;
+  padding-bottom:80px;
+}
+
+
+/* =========================
+   STORIES
+========================= */
+
+.stories{
+  display:flex;
+  gap:15px;
+  overflow-x:auto;
+  background:white;
+  border-bottom:1px solid #ddd;
+  padding:15px;
+}
+
+.stories::-webkit-scrollbar{
+  display:none;
+}
+
+.story{
+  min-width:65px;
+  text-align:center;
+  font-size:11px;
+}
+
+.story-pic{
+  width:58px;
+  height:58px;
+  margin:auto;
+  border-radius:50%;
+  padding:3px;
+  background:linear-gradient(
+    45deg,
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    #4f5bd5
+  );
+}
+
+.story-pic div{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background:#ddd;
+  border:3px solid white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+}
+
+
+/* =========================
+   POST
+========================= */
+
+.post{
+  background:white;
+  border:1px solid #ddd;
+  margin-top:15px;
+}
+
+.post-header{
+  display:flex;
+  align-items:center;
+  padding:10px 12px;
+  gap:10px;
+}
+
+.avatar{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ff9966,#ff5e62);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-weight:bold;
+}
+
+.username{
+  font-weight:bold;
+  font-size:14px;
+}
+
+.location{
+  font-size:11px;
+  color:#777;
+}
+
+.more{
+  margin-left:auto;
+  font-size:20px;
+}
+
+.post-image{
+  width:100%;
+  aspect-ratio:1/1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:80px;
+  background:linear-gradient(
+    135deg,
+    #c2e9fb,
+    #a1c4fd
+  );
+}
+
+.post:nth-of-type(2) .post-image{
+  background:linear-gradient(
+    135deg,
+    #fbc2eb,
+    #a6c1ee
+  );
+}
+
+.post-actions{
+  display:flex;
+  gap:18px;
+  padding:12px;
+  font-size:24px;
+}
+
+.bookmark{
+  margin-left:auto;
+}
+
+.post-info{
+  padding:0 12px 15px;
+  font-size:13px;
   line-height:1.5;
 }
 
-#lesson{
-  display:none;
-  margin-top:18px;
+.likes{
+  font-weight:bold;
+  margin-bottom:5px;
 }
 
-.section{
-  background:#fff;
-  border:1px solid #ddd;
-  border-radius:10px;
-  padding:18px;
-  margin-bottom:12px;
+
+/* =========================
+   REELS
+========================= */
+
+.section-title{
+  padding:18px 15px 5px;
+  font-size:20px;
+  font-weight:bold;
 }
 
-.section h2{
-  margin-top:0;
-  font-size:19px;
+.reel{
+  margin:15px;
+  height:430px;
+  border-radius:12px;
+  overflow:hidden;
+  position:relative;
+  background:linear-gradient(
+    160deg,
+    #111827,
+    #4c1d95,
+    #be185d
+  );
+  color:white;
 }
 
-.section h3{
-  font-size:15px;
+.reel-content{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  font-size:70px;
 }
 
-.section li{
-  margin-bottom:9px;
-  line-height:1.45;
+.reel-title{
+  font-size:18px;
+  margin-top:10px;
 }
 
-.quiz{
-  background:#f8fafc;
-  border-radius:10px;
+.reel-actions{
+  position:absolute;
+  right:12px;
+  bottom:25px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  font-size:25px;
+  text-align:center;
+}
+
+.reel-actions span{
+  font-size:11px;
+}
+
+
+/* =========================
+   EXPLORE
+========================= */
+
+.explore-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:3px;
   padding:15px;
-  margin-top:12px;
 }
 
-.question{
-  font-weight:700;
-  font-size:14px;
-  margin-bottom:10px;
+.explore-item{
+  aspect-ratio:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:45px;
+  background:linear-gradient(
+    135deg,
+    #dbeafe,
+    #fbcfe8
+  );
 }
 
-.quiz button{
-  width:100%;
-  margin-top:7px;
+
+/* =========================
+   BOTTOM NAV
+========================= */
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:60px;
+  background:white;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  z-index:30;
+}
+
+.nav-btn{
+  border:0;
+  background:none;
+  font-size:23px;
+  cursor:pointer;
+}
+
+.nav-btn.active{
+  font-weight:bold;
+}
+
+
+/* =========================
+   SECURITY PANEL
+========================= */
+
+.security-panel{
+  margin:15px;
+  padding:15px;
+  border-radius:10px;
+  background:#fff7ed;
+  color:#7c2d12;
+  font-size:12px;
+  line-height:1.5;
+}
+
+.logout{
+  width:calc(100% - 30px);
+  margin:0 15px 20px;
   padding:11px;
   border:1px solid #ccc;
   border-radius:7px;
   background:white;
+  font-weight:bold;
   cursor:pointer;
-}
-
-.quiz button:hover{
-  background:#f3f4f6;
-}
-
-.quiz button:disabled{
-  cursor:not-allowed;
-  opacity:.65;
-}
-
-.feedback{
-  display:none;
-  margin-top:10px;
-  padding:9px;
-  border-radius:6px;
-  background:#ecfdf5;
-  color:#166534;
-  font-size:12px;
-}
-
-.score{
-  text-align:center;
-  background:#f5f3ff;
-  padding:15px;
-  border-radius:10px;
-  margin-top:15px;
-}
-
-.history{
-  margin-top:12px;
-  padding:12px;
-  background:#f9fafb;
-  border-radius:8px;
-  font-size:12px;
-}
-
-#final{
-  display:none;
-  margin-top:15px;
-  padding:15px;
-  background:#f1f5f9;
-  border-radius:10px;
-  line-height:1.5;
-}
-
-.restart{
-  width:100%;
-  margin-top:15px;
-  padding:12px;
-  border:0;
-  border-radius:7px;
-  background:#444;
-  color:white;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.clear-history{
-  width:100%;
-  margin-top:8px;
-  padding:9px;
-  border:1px solid #ccc;
-  border-radius:7px;
-  background:white;
-  cursor:pointer;
-}
-
-.footer{
-  text-align:center;
-  color:#888;
-  font-size:10px;
-  margin-top:15px;
-  line-height:1.4;
 }
 </style>
 </head>
 
+
 <body>
 
-<div class="wrap">
 
-<div class="badge">
-SECURITY AWARENESS DEMO
-</div>
+<!-- =================================
+     LOGIN PAGE
+================================= -->
 
-<div class="card">
+<div id="loginPage">
 
-<!-- LOGIN SCREEN -->
-
-<div id="loginScreen">
+<div class="login-card">
 
 <div class="logo">
 Instagram
 </div>
 
-<div class="demo-label">
-Fictional social-media login simulation
-</div>
-
-<form id="loginForm">
-
-<input
-  id="username"
-  type="text"
-  placeholder="Username, email or phone"
-  autocomplete="off"
->
-
-<div class="password-box">
-
-<input
-  id="password"
-  type="password"
-  placeholder="Password"
-  autocomplete="off"
->
-
-<button
-  type="button"
-  class="show"
-  id="showPassword">
-Show
-</button>
-
-</div>
-
-<button
-  class="login"
-  type="submit">
-Log in
-</button>
-
-</form>
-
-<div class="notice">
-<strong>Training only.</strong><br>
-Use dummy credentials. The username and password
-entered here are immediately discarded and are never
-saved, transmitted, or sent to a server.
-</div>
-
-</div>
-
-
-<!-- SECURITY LESSON -->
-
-<div id="lesson">
-
-<div class="section">
-
-<h2>🔐 Security Check</h2>
-
-<p>
-A convincing login page does not necessarily mean
-that a website is legitimate.
-</p>
-
-<p>
-Before entering sensitive information, verify the
-website and the reason for the login request.
-</p>
-
-</div>
-
-
-<div class="section">
-
-<h3>⚠️ Warning signs</h3>
-
-<ul>
-
-<li>Unexpected login request</li>
-
-<li>Unfamiliar website address</li>
-
-<li>Pressure to act immediately</li>
-
-<li>Requests for sensitive information</li>
-
-<li>Unusual spelling or formatting</li>
-
-<li>Links received from unknown sources</li>
-
-</ul>
-
-</div>
-
-
-<!-- QUESTION 1 -->
-
-<div class="quiz">
-
-<div class="question">
-1. What should you verify before signing in?
-</div>
-
-<button class="answer" data-correct="true">
-The website address
-</button>
-
-<button class="answer" data-correct="false">
-Only the page design
-</button>
-
-<div class="feedback"></div>
-
-</div>
-
-
-<!-- QUESTION 2 -->
-
-<div class="quiz">
-
-<div class="question">
-2. What should you do with an unexpected login request?
-</div>
-
-<button class="answer" data-correct="true">
-Verify it through the official service
-</button>
-
-<button class="answer" data-correct="false">
-Enter your password immediately
-</button>
-
-<div class="feedback"></div>
-
-</div>
-
-
-<!-- QUESTION 3 -->
-
-<div class="quiz">
-
-<div class="question">
-3. Should you reuse your real password in a training demo?
-</div>
-
-<button class="answer" data-correct="false">
-Yes
-</button>
-
-<button class="answer" data-correct="true">
-No
-</button>
-
-<div class="feedback"></div>
-
-</div>
-
-
-<div class="score">
-
-<strong>Training Score</strong>
-
-<div id="score">
-0 / 3
-</div>
-
-</div>
-
-
-<div class  background:#fff8dc;
-  color:#665514;
-  font-size:11px;
-  line-height:1.5;
-}
-
-#lesson{
-  display:none;
-  margin-top:18px;
-}
-
-.section{
-  background:white;
-  border:1px solid #ddd;
-  border-radius:10px;
-  padding:18px;
-  margin-bottom:12px;
-}
-
-.section h2{
-  margin-top:0;
-  font-size:19px;
-}
-
-.section h3{
-  font-size:15px;
-}
-
-.section li{
-  margin-bottom:9px;
-  line-height:1.45;
-}
-
-.quiz{
-  background:#f5f5f5;
-  border-radius:10px;
-  padding:15px;
-  margin-top:12px;
-}
-
-.question{
-  font-weight:700;
-  font-size:14px;
-  margin-bottom:10px;
-}
-
-.quiz button{
-  margin-top:7px;
-  background:white;
-  border:1px solid #ccc;
-  color:#222;
-}
-
-.feedback{
-  display:none;
-  margin-top:10px;
-  padding:9px;
-  border-radius:6px;
-  background:#e8f5e9;
-  color:#285c2d;
-  font-size:12px;
-}
-
-.score{
-  text-align:center;
-  background:#eef2ff;
-  padding:15px;
-  border-radius:10px;
-  margin-top:15px;
-}
-
-#final{
-  display:none;
-  margin-top:15px;
-  padding:15px;
-  background:#f1f5f9;
-  border-radius:10px;
-  line-height:1.5;
-}
-
-.restart{
-  margin-top:15px;
-  background:#555;
-  color:white;
-}
-
-.footer{
-  text-align:center;
-  color:#888;
-  font-size:10px;
-  margin-top:15px;
-}
-</style>
-</head>
-
-<body>
-
-<div class="wrap">
-
-<div class="badge">SECURITY AWARENESS DEMO</div>
-
-<div class="card">
-
-<div id="loginScreen">
-
-<div class="logo">PhotoShare</div>
-
-<div class="subtitle">
-Fictional social-media login security simulation
+<div class="training">
+FICTIONAL SECURITY TRAINING SIMULATION
 </div>
 
 <form id="loginForm">
@@ -562,7 +480,9 @@ Show
 
 </div>
 
-<button class="login" type="submit">
+<button
+class="login-btn"
+type="submit">
 Log in
 </button>
 
@@ -570,275 +490,44 @@ Log in
 
 <div class="notice">
 <strong>Training only.</strong><br>
-Use dummy credentials. This demonstration does not save,
-transmit, or collect passwords.
+Use dummy credentials. Login information is not
+saved, transmitted, logged, or sent anywhere.
 </div>
-
-</div>
-
-
-<div id="lesson">
-
-<div class="section">
-
-<h2>Security check</h2>
-
-<p>
-A login page can look convincing without being legitimate.
-Before entering sensitive information, inspect the request carefully.
-</p>
-
-</div>
-
-<div class="section">
-
-<h3>Check these warning signs</h3>
-
-<ul>
-<li>Unexpected login request</li>
-<li>Suspicious or unfamiliar website address</li>
-<li>Pressure to act immediately</li>
-<li>Requests for sensitive information</li>
-<li>Unusual wording or formatting</li>
-</ul>
-
-</div>
-
-
-<div class="quiz">
-
-<div class="question">
-1. What should you check before signing in?
-</div>
-
-<button class="answer" data-correct="true">
-The website address
-</button>
-
-<button class="answer" data-correct="false">
-Only the page design
-</button>
-
-<div class="feedback"></div>
-
-</div>
-
-
-<div class="quiz">
-
-<div class="question">
-2. What should you do with an unexpected login request?
-</div>
-
-<button class="answer" data-correct="true">
-Verify it through the official service
-</button>
-
-<button class="answer" data-correct="false">
-Enter your password immediately
-</button>
-
-<div class="feedback"></div>
-
-</div>
-
-
-<div class="quiz">
-
-<div class="question">
-3. Should a real password be used in this demo?
-</div>
-
-<button class="answer" data-correct="false">
-Yes
-</button>
-
-<button class="answer" data-correct="true">
-No
-</button>
-
-<div class="feedback"></div>
-
-</div>
-
-
-<div class="score">
-
-<strong>Training score</strong>
-
-<div id="score">0 / 3</div>
-
-</div>
-
-
-<div id="final">
-
-<strong>Training complete.</strong>
-
-<p id="finalText"></p>
-
-<p>
-Remember: verify unexpected login requests, inspect the website
-address, and never reuse passwords on unfamiliar pages.
-</p>
-
-</div>
-
-<button
-class="restart"
-id="restart"
-type="button">
-Start Again
-</button>
 
 </div>
 
 </div>
 
-<div class="footer">
-Fictional training interface — not affiliated with Instagram or Meta.
+
+<!-- =================================
+     SOCIAL MEDIA APP
+================================= -->
+
+<div id="app">
+
+<header class="topbar">
+
+<div class="top-logo">
+Instagram
 </div>
 
+<div class="top-icons">
+<span>♡</span>
+<span>✉</span>
 </div>
 
-
-<script>
-
-const form = document.getElementById("loginForm");
-const loginScreen = document.getElementById("loginScreen");
-const lesson = document.getElementById("lesson");
-
-const password = document.getElementById("password");
-const showPassword = document.getElementById("showPassword");
-
-const answers = document.querySelectorAll(".answer");
-const scoreDisplay = document.getElementById("score");
-const final = document.getElementById("final");
-const finalText = document.getElementById("finalText");
-const restart = document.getElementById("restart");
-
-let score = 0;
-let answered = 0;
-const completed = new Set();
+</header>
 
 
-showPassword.addEventListener("click", function(){
-
-  if(password.type === "password"){
-    password.type = "text";
-    showPassword.textContent = "Hide";
-  }else{
-    password.type = "password";
-    showPassword.textContent = "Show";
-  }
-
-});
+<div class="app-container">
 
 
-form.addEventListener("submit", function(event){
+<!-- STORIES -->
 
-  event.preventDefault();
+<div class="stories">
 
-  /*
-    SECURITY:
-    The entered username and password are not saved,
-    transmitted, logged, or sent to any external service.
-  */
-
-  loginScreen.style.display = "none";
-  lesson.style.display = "block";
-
-});
+<div class="story">
+<div class="story-pic">
+<div>😊</
 
 
-answers.forEach(function(button){
-
-  button.addEventListener("click", function(){
-
-    const quiz = button.closest(".quiz");
-
-    if(completed.has(quiz)){
-      return;
-    }
-
-    completed.add(quiz);
-    answered++;
-
-    const feedback = quiz.querySelector(".feedback");
-    const buttons = quiz.querySelectorAll("button");
-
-    if(button.dataset.correct === "true"){
-
-      score++;
-      feedback.textContent = "Correct.";
-
-    }else{
-
-      feedback.textContent =
-        "Review the security guidance above.";
-
-    }
-
-    feedback.style.display = "block";
-
-    buttons.forEach(function(item){
-      item.disabled = true;
-    });
-
-    scoreDisplay.textContent =
-      score + " / 3";
-
-
-    if(answered === 3){
-
-      final.style.display = "block";
-
-      finalText.textContent =
-        "You answered " + score +
-        " out of 3 questions correctly.";
-
-    }
-
-  });
-
-});
-
-
-restart.addEventListener("click", function(){
-
-  score = 0;
-  answered = 0;
-  completed.clear();
-
-  scoreDisplay.textContent = "0 / 3";
-
-  final.style.display = "none";
-  finalText.textContent = "";
-
-  answers.forEach(function(button){
-
-    button.disabled = false;
-
-  });
-
-  document.querySelectorAll(".feedback").forEach(function(item){
-
-    item.style.display = "none";
-    item.textContent = "";
-
-  });
-
-  form.reset();
-
-  password.type = "password";
-  showPassword.textContent = "Show";
-
-  lesson.style.display = "none";
-  loginScreen.style.display = "block";
-
-});
-
-</script>
-
-</body>
-</html>
