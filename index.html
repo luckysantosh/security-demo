@@ -6,7 +6,9 @@
   <title>Social Login Security Demo</title>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -27,7 +29,9 @@
       box-shadow: 0 8px 30px rgba(0,0,0,.08);
     }
 
-    .center { text-align: center; }
+    .center {
+      text-align: center;
+    }
 
     .training {
       display: inline-block;
@@ -70,6 +74,12 @@
       background: #333;
       color: white;
       font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: .55;
+      cursor: default;
     }
 
     .warning,
@@ -140,6 +150,14 @@
       color: #666;
       line-height: 1.5;
     }
+
+    #trainingLog {
+      display: none;
+      padding: 12px;
+      border-radius: 8px;
+      background: #eef6ff;
+      color: #24527a;
+    }
   </style>
 </head>
 
@@ -166,18 +184,22 @@
     <form id="loginForm">
 
       <input
+        id="demoUsername"
         type="text"
         placeholder="Demo username"
         autocomplete="off"
       >
 
       <input
+        id="demoPassword"
         type="password"
         placeholder="Demo password"
         autocomplete="off"
       >
 
-      <button type="submit">Log in</button>
+      <button type="submit">
+        Log in
+      </button>
 
     </form>
 
@@ -191,7 +213,6 @@
   <section id="result">
 
     <div class="lesson">
-
       <h2>Simulation complete</h2>
 
       <p>
@@ -201,8 +222,9 @@
       <p>
         Now test your phishing-awareness knowledge.
       </p>
-
     </div>
+
+    <div id="trainingLog" class="notice"></div>
 
     <div class="quiz">
 
@@ -267,12 +289,10 @@
       Start Again
     </button>
 
-  <div class="notice">
-  Local training exercise only.<br>
-  Passwords are never saved or transmitted.
-</div>
-
-<div id="trainingLog" class="notice"></div>
+    <div class="notice">
+      Local training exercise only.<br>
+      No credentials are collected, transmitted, or stored.
+    </div>
 
   </section>
 
@@ -285,17 +305,43 @@
   const reset = document.getElementById("reset");
   const answers = document.querySelectorAll(".answer");
   const scoreDisplay = document.getElementById("score");
+  const trainingLog = document.getElementById("trainingLog");
 
   let score = 0;
   const completed = new Set();
 
   form.addEventListener("submit", function(event) {
-trainingLog.textContent =
-  "Training event recorded locally: login simulation attempted. Password was not saved.";
+    event.preventDefault();
+
+    /*
+      SECURITY NOTE:
+      The username and password are deliberately NOT saved,
+      transmitted, logged, or sent to any server.
+    */
+
+    const usernameField = document.getElementById("demoUsername");
+    const passwordField = document.getElementById("demoPassword");
+
+    /*
+      We only record that a simulation was attempted.
+      The actual password value is never used.
+    */
+    if (usernameField.value.trim() !== "" ||
+        passwordField.value.trim() !== "") {
+
+      trainingLog.textContent =
+        "Training event recorded locally: login simulation attempted. " +
+        "The password was not saved or transmitted.";
+
+      trainingLog.style.display = "block";
+    }
+
+    login.style.display = "none";
     result.style.display = "block";
   });
 
   answers.forEach(function(button) {
+
     button.addEventListener("click", function() {
 
       const quiz = button.closest(".quiz");
@@ -309,24 +355,34 @@ trainingLog.textContent =
       completed.add(quiz);
 
       if (button.dataset.correct === "true") {
+
         score++;
+
         feedback.textContent = "Correct.";
+
       } else {
+
         feedback.textContent =
           "Not quite. Review the security lesson and try the next question.";
       }
 
       feedback.style.display = "block";
-      scoreDisplay.textContent = score + " / 3";
+
+      scoreDisplay.textContent =
+        score + " / 3";
 
       buttons.forEach(function(item) {
         item.disabled = true;
       });
+
     });
+
   });
 
   reset.addEventListener("click", function() {
+
     score = 0;
+
     completed.clear();
 
     scoreDisplay.textContent = "0 / 3";
@@ -340,9 +396,14 @@ trainingLog.textContent =
       item.textContent = "";
     });
 
+    trainingLog.style.display = "none";
+    trainingLog.textContent = "";
+
+    form.reset();
+
     result.style.display = "none";
     login.style.display = "block";
-    form.reset();
+
   });
 </script>
 
