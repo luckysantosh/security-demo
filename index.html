@@ -1,48 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0,
-               maximum-scale=1.0,user-scalable=no">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>PhotoShare Training</title>
 
 <style>
 *{
     box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
 }
 
-body{
+html,body{
     margin:0;
-    background:#000;
-    color:#fff;
-    font-family:-apple-system,BlinkMacSystemFont,
-                "Segoe UI",Roboto,Arial,sans-serif;
+    padding:0;
+    width:100%;
+    min-height:100%;
+    font-family:Arial,sans-serif;
 }
 
-/* ==============================
-   LOGIN
-============================== */
+/* LOGIN */
 
 #loginPage{
     min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
     background:#fafafa;
-    color:#222;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
 }
 
 .loginBox{
     width:100%;
     max-width:380px;
-    padding:30px;
-    background:#fff;
+    background:white;
     border:1px solid #ddd;
-    border-radius:10px;
+    padding:30px;
+    border-radius:8px;
 }
 
 .loginLogo{
@@ -50,48 +43,47 @@ body{
     font-family:cursive;
     font-size:42px;
     font-weight:bold;
-    margin-bottom:8px;
+    margin-bottom:10px;
 }
 
-.trainingText{
+.training{
     text-align:center;
     color:#777;
     font-size:11px;
     margin-bottom:25px;
 }
 
-input{
+.input{
     width:100%;
-    height:46px;
-    margin-bottom:10px;
+    height:45px;
     padding:0 12px;
+    margin-bottom:10px;
     border:1px solid #ddd;
     border-radius:6px;
     background:#fafafa;
-    outline:none;
 }
 
-.passwordBox{
+.passwordArea{
     position:relative;
 }
 
-.passwordBox input{
+.passwordArea .input{
     padding-right:65px;
 }
 
-.showPassword{
+.showBtn{
     position:absolute;
     right:5px;
     top:0;
-    height:46px;
+    height:45px;
     border:0;
-    background:none;
+    background:transparent;
     font-weight:bold;
 }
 
-.loginButton{
+.loginBtn{
     width:100%;
-    height:44px;
+    height:45px;
     border:0;
     border-radius:7px;
     color:white;
@@ -105,105 +97,82 @@ input{
     );
 }
 
-.warning{
+.notice{
     margin-top:18px;
     padding:12px;
-    border-radius:8px;
     background:#fff7ed;
     color:#7c2d12;
+    border-radius:7px;
     font-size:11px;
     line-height:1.5;
 }
 
 
-/* ==============================
-   APP
-============================== */
+/* APP */
 
 #app{
     display:none;
     min-height:100vh;
     background:#000;
+    color:#fff;
 }
 
-.phone{
+.feed{
     width:100%;
     max-width:520px;
-    min-height:100vh;
     margin:auto;
-    background:#000;
-    position:relative;
-    padding-bottom:65px;
+    padding-bottom:70px;
 }
 
 
-/* ==============================
-   TOP BAR
-============================== */
+/* TOP */
 
-.topBar{
+.top{
     height:58px;
     display:flex;
     align-items:center;
     justify-content:space-between;
     padding:0 15px;
     background:#000;
-    border-bottom:1px solid #171717;
+    border-bottom:1px solid #222;
     position:sticky;
     top:0;
-    z-index:20;
+    z-index:10;
 }
 
-.add{
-    font-size:31px;
-    font-weight:200;
-}
-
-.logo{
+.instagram{
     font-family:cursive;
-    font-size:29px;
+    font-size:28px;
     font-weight:bold;
 }
 
-.heart{
-    font-size:29px;
-    font-weight:200;
+.topIcon{
+    font-size:27px;
 }
 
 
-/* ==============================
-   STORIES
-============================== */
+/* STORIES */
 
 .stories{
-    height:112px;
     display:flex;
-    gap:15px;
-    padding:11px 13px;
+    gap:14px;
     overflow-x:auto;
-    border-bottom:1px solid #151515;
-}
-
-.stories::-webkit-scrollbar{
-    display:none;
+    padding:12px;
+    height:108px;
+    border-bottom:1px solid #181818;
 }
 
 .story{
-    min-width:67px;
+    min-width:65px;
     text-align:center;
-    font-size:11px;
-    color:#eee;
-    white-space:nowrap;
-    overflow:hidden;
+    font-size:10px;
 }
 
-.storyCircle{
-    width:67px;
-    height:67px;
-    border-radius:50%;
+.storyRing{
+    width:64px;
+    height:64px;
     padding:3px;
-    margin-bottom:5px;
-
+    border-radius:50%;
     background:linear-gradient(
         45deg,
         #feda75,
@@ -212,130 +181,211 @@ input{
         #962fbf,
         #4f5bd5
     );
+    margin-bottom:5px;
 }
 
-.storyInner{
+.storyPhoto{
     width:100%;
     height:100%;
     border-radius:50%;
+    background:#333;
     border:3px solid #000;
-    background:#252525;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:29px;
-}
-
-.yourStory{
-    position:relative;
-}
-
-.plus{
-    position:absolute;
-    right:0;
-    bottom:1px;
-    width:22px;
-    height:22px;
-    border-radius:50%;
-    background:#fff;
-    color:#000;
-    border:2px solid #000;
-    font-size:17px;
-    line-height:17px;
+    font-size:25px;
 }
 
 
-/* ==============================
-   POST
-============================== */
+/* POST */
 
 .post{
-    background:#000;
-    border-bottom:1px solid #171717;
+    border-bottom:1px solid #222;
 }
 
 .postHeader{
-    height:57px;
+    height:55px;
     display:flex;
     align-items:center;
     padding:7px 12px;
 }
 
-.postAvatar{
-    width:39px;
-    height:39px;
+.avatar{
+    width:38px;
+    height:38px;
     border-radius:50%;
-    padding:2px;
-
     background:linear-gradient(
         45deg,
         #feda75,
-        #fa7e1e,
         #d62976,
-        #962fbf
+        #4f5bd5
     );
-}
-
-.avatarInside{
-    width:100%;
-    height:100%;
-    border-radius:50%;
-    background:#292929;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:19px;
+    font-size:20px;
 }
 
-.postUser{
+.user{
     margin-left:9px;
     font-size:13px;
     font-weight:bold;
 }
 
-.verified{
-    color:#3295ff;
-}
-
-.postMore{
+.more{
     margin-left:auto;
     font-size:20px;
-    letter-spacing:2px;
 }
 
 
-/* ==============================
-   POST IMAGE
-============================== */
+/* IMAGE */
 
 .postImage{
     width:100%;
-    aspect-ratio:1 / 1;
+    aspect-ratio:1/1;
     background:
-        linear-gradient(
-            145deg,
-            #101010,
-            #292929 50%,
-            #090909
+        radial-gradient(
+            circle at center,
+            #075985 0%,
+            #082f49 28%,
+            #020617 60%,
+            #000 100%
         );
-
     display:flex;
     align-items:center;
     justify-content:center;
-    position:relative;
-    overflow:hidden;
+    text-align:center;
 }
 
-.postImage::before{
-    content:"";
-    position:absolute;
-    width:75%;
-    height:75%;
-    border-radius:50%;
-    background:
-        radial-gradient(
-            circle,
-            #164e63,
-            #063b4c 35%,
-            #020617 
+.postTitle{
+    font-size:34px;
+    font-weight:900;
+    color:#ff2929;
+    text-shadow:0 3px 8px #000;
+}
+
+.postSub{
+    margin-top:15px;
+    font-size:17px;
+    font-weight:bold;
+    color:#ffe600;
+}
+
+
+/* ACTIONS */
+
+.actions{
+    display:flex;
+    gap:18px;
+    padding:10px 12px 5px;
+    font-size:26px;
+}
+
+.save{
+    margin-left:auto;
+}
+
+
+/* CAPTION */
+
+.caption{
+    padding:0 12px 15px;
+    font-size:13px;
+    line-height:1.5;
+}
+
+.likes{
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.gray{
+    color:#888;
+}
+
+
+/* SECOND POST */
+
+.secondImage{
+    width:100%;
+    aspect-ratio:1/1;
+    background:linear-gradient(
+        135deg,
+        #111827,
+        #312e81,
+        #831843
+    );
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:80px;
+}
+
+
+/* SECURITY */
+
+.security{
+    margin:15px 12px;
+    padding:14px;
+    border:1px solid #292929;
+    border-radius:8px;
+    background:#111;
+    color:#bbb;
+    font-size:11px;
+    line-height:1.5;
+}
+
+
+/* LOGOUT */
+
+.logout{
+    width:calc(100% - 24px);
+    margin:0 12px 20px;
+    padding:11px;
+    border:1px solid #444;
+    border-radius:7px;
+    background:#111;
+    color:white;
+    font-weight:bold;
+}
+
+
+/* BOTTOM */
+
+.bottom{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    height:60px;
+    background:#000;
+    border-top:1px solid #222;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:20;
+}
+
+.bottom span{
+    font-size:26px;
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================
+     LOGIN PAGE
+========================= -->
+
+<div id="loginPage">
+
+    <div class="loginBox">
+
+        <div class="loginLogo">
+            Instagram
+        </div>
+
+        <div 
 
