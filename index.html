@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Security Awareness Demo</title>
+  <title>Social Login Security Demo</title>
 
   <style>
     * { box-sizing: border-box; }
@@ -13,277 +13,184 @@
       min-height: 100vh;
       display: grid;
       place-items: center;
-      background: #f6f8fa;
+      background: #fafafa;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      padding: 20px;
     }
 
     .card {
-      width: min(460px, 100%);
-      padding: 28px;
+      width: min(390px, 92%);
+      padding: 28px 24px;
       background: white;
       border: 1px solid #ddd;
-      border-radius: 20px;
+      border-radius: 16px;
+      text-align: center;
       box-shadow: 0 8px 30px rgba(0,0,0,.08);
     }
 
-    .center {
-      text-align: center;
-    }
-
-    .badge {
+    .training {
       display: inline-block;
       padding: 7px 12px;
+      margin-bottom: 22px;
       border-radius: 20px;
       background: #fff3cd;
       color: #664d03;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
+      letter-spacing: .4px;
     }
 
-    h1 {
-      margin: 26px 0 12px;
-      font-size: 34px;
-      text-align: center;
+    .logo {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 8px;
     }
 
-    h2 {
-      margin-top: 0;
-    }
-
-    p {
-      line-height: 1.5;
-      color: #444;
-    }
-
-    input, button {
-      width: 100%;
-      margin-top: 12px;
-      padding: 14px;
-      border-radius: 10px;
-      font-size: 16px;
+    .subtitle {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 24px;
     }
 
     input {
+      width: 100%;
+      padding: 14px;
+      margin-top: 10px;
       border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      background: #fafafa;
     }
 
     button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 14px;
       border: 0;
-      background: #24292f;
+      border-radius: 8px;
+      background: #333;
       color: white;
+      font-size: 16px;
       font-weight: 700;
     }
 
-    .hidden {
-      display: none;
+    .warning {
+      margin-top: 18px;
+      padding: 15px;
+      background: #fff8dc;
+      border-radius: 10px;
+      color: #604c12;
+      font-size: 13px;
+      line-height: 1.5;
     }
 
-    .result {
+    #result {
+      display: none;
       margin-top: 20px;
       padding: 20px;
-      border-radius: 14px;
       background: #e8f5e9;
-      color: #245b2a;
-    }
-
-    .warning,
-    .exercise {
-      margin-top: 18px;
-      padding: 18px;
       border-radius: 12px;
+      color: #285c2d;
+      line-height: 1.5;
     }
 
-    .warning {
-      background: #fff3cd;
-      color: #664d03;
-    }
-
-    .exercise {
-      background: #f1f5f9;
-      color: #333;
-    }
-
-    ul {
-      padding-left: 20px;
-      line-height: 1.6;
-    }
-
-    .url {
-      display: block;
-      margin: 12px 0;
-      padding: 12px;
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 9px;
-      word-break: break-all;
-      font-family: monospace;
-      font-size: 14px;
-    }
-
-    .choice {
-      background: white;
-      color: #24292f;
-      border: 1px solid #ccc;
-    }
-
-    .feedback {
-      margin-top: 14px;
-      padding: 14px;
-      border-radius: 10px;
-      background: #e8f5e9;
-      color: #245b2a;
-      display: none;
-    }
-
-    .again {
+    .reset {
       background: #555;
       margin-top: 18px;
-    }
-
-    .notice {
-      margin-top: 18px;
-      font-size: 13px;
-      color: #666;
-      text-align: center;
     }
   </style>
 </head>
 
 <body>
 
-<main class="card">
+  <main class="card">
 
-  <div class="center">
-    <div class="badge">SECURITY AWARENESS DEMO</div>
-  </div>
+    <div class="training">
+      SECURITY TRAINING DEMO
+    </div>
 
-  <h1>Fictional Login</h1>
+    <div class="logo">PhotoShare</div>
 
-  <div id="login">
-    <p class="center">
-      This is a controlled security-awareness simulation.
-      Use dummy information only.
-    </p>
+    <div class="subtitle">
+      Fictional social-media login simulation
+    </div>
 
-    <form id="demo">
+    <form id="loginForm">
+
       <input
+        id="username"
         type="text"
         placeholder="Demo username"
         autocomplete="off"
       >
 
       <input
+        id="password"
         type="password"
         placeholder="Demo password"
         autocomplete="off"
       >
 
-      <button type="submit">Sign in</button>
+      <button type="submit">
+        Log in
+      </button>
+
     </form>
-  </div>
-
-  <section id="result" class="result hidden">
-
-    <h2>Simulation complete.</h2>
-
-    <p>
-      This demonstration did not transmit or store the information
-      entered into the form.
-    </p>
 
     <div class="warning">
-      <strong>Phishing red flags:</strong>
-
-      <ul>
-        <li>Check the website address carefully.</li>
-        <li>Be cautious with unexpected login requests.</li>
-        <li>Watch for urgency or threats.</li>
-        <li>Never share passwords or verification codes.</li>
-        <li>When unsure, use the official app or website.</li>
-      </ul>
+      <strong>Training only</strong><br>
+      Use dummy information. Never enter a real password.
     </div>
 
-    <div class="exercise">
+    <div id="result">
 
-      <h2>URL Awareness Quiz</h2>
+      <h2>Simulation complete.</h2>
 
       <p>
-        Which part of this fictional address is the actual domain?
+        The information entered was not transmitted
+        or stored.
       </p>
 
-      <span class="url">
-        https://accounts.example.com/login
-      </span>
+      <p>
+        <strong>Security lesson:</strong><br>
+        Always check the website address before entering
+        login information.
+      </p>
 
-      <button class="choice" data-answer="wrong">
-        /login
+      <button class="reset" onclick="resetDemo()">
+        Try Again
       </button>
-
-      <button class="choice" data-answer="correct">
-        example.com
-      </button>
-
-      <button class="choice" data-answer="wrong">
-        https://
-      </button>
-
-      <div id="feedback" class="feedback"></div>
 
     </div>
 
-    <button class="again" type="button" id="again">
-      Try Simulation Again
-    </button>
+  </main>
 
-    <div class="notice">
-      Training demo only. No credentials are collected,
-      transmitted, or stored.
-    </div>
+  <script>
+    document
+      .getElementById("loginForm")
+      .addEventListener("submit", function(event) {
 
-  </section>
+        event.preventDefault();
 
-</main>
+        /*
+          TRAINING SAFETY:
+          The username and password are never sent anywhere.
+          They are not stored in cookies, localStorage,
+          databases, webhooks, or external services.
+        */
 
-<script>
-  const form = document.querySelector("#demo");
-  const login = document.querySelector("#login");
-  const result = document.querySelector("#result");
-  const again = document.querySelector("#again");
-  const choices = document.querySelectorAll(".choice");
-  const feedback = document.querySelector("#feedback");
+        document.getElementById("loginForm").style.display = "none";
+        document.querySelector(".warning").style.display = "none";
+        document.getElementById("result").style.display = "block";
+      });
 
-  form.addEventListener("submit", function(event) {
-    event.preventDefault();
+    function resetDemo() {
+      document.getElementById("loginForm").reset();
 
-    login.classList.add("hidden");
-    result.classList.remove("hidden");
-  });
-
-  choices.forEach(function(button) {
-    button.addEventListener("click", function() {
-
-      feedback.style.display = "block";
-
-      if (button.dataset.answer === "correct") {
-        feedback.textContent =
-          "Correct. In this fictional example, example.com is the domain.";
-      } else {
-        feedback.textContent =
-          "Not quite. Look for the registered domain: example.com.";
-      }
-    });
-  });
-
-  again.addEventListener("click", function() {
-    result.classList.add("hidden");
-    login.classList.remove("hidden");
-    form.reset();
-
-    feedback.style.display = "none";
-    feedback.textContent = "";
-  });
-</script>
+      document.getElementById("loginForm").style.display = "block";
+      document.querySelector(".warning").style.display = "block";
+      document.getElementById("result").style.display = "none";
+    }
+  </script>
 
 </body>
 </html>
