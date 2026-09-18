@@ -1,533 +1,341 @@
- <!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0,
+               maximum-scale=1.0,user-scalable=no">
 
-<title>Social Media Security Training</title>
+<title>PhotoShare Training</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
 
 body{
-  margin:0;
-  background:#fafafa;
-  color:#262626;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    margin:0;
+    background:#000;
+    color:#fff;
+    font-family:-apple-system,BlinkMacSystemFont,
+                "Segoe UI",Roboto,Arial,sans-serif;
 }
 
-/* =========================
+/* ==============================
    LOGIN
-========================= */
+============================== */
 
 #loginPage{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  background:linear-gradient(135deg,#fdf2f8,#ede9fe);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    background:#fafafa;
+    color:#222;
 }
 
-.login-card{
-  width:100%;
-  max-width:390px;
-  background:white;
-  border:1px solid #ddd;
-  padding:35px 28px;
-  box-shadow:0 10px 35px rgba(0,0,0,.08);
+.loginBox{
+    width:100%;
+    max-width:380px;
+    padding:30px;
+    background:#fff;
+    border:1px solid #ddd;
+    border-radius:10px;
 }
 
-.logo{
-  text-align:center;
-  font-family:cursive;
-  font-size:42px;
-  font-weight:bold;
-  margin-bottom:10px;
+.loginLogo{
+    text-align:center;
+    font-family:cursive;
+    font-size:42px;
+    font-weight:bold;
+    margin-bottom:8px;
 }
 
-.training{
-  text-align:center;
-  font-size:11px;
-  color:#777;
-  margin-bottom:25px;
+.trainingText{
+    text-align:center;
+    color:#777;
+    font-size:11px;
+    margin-bottom:25px;
 }
 
 input{
-  width:100%;
-  height:45px;
-  margin-bottom:9px;
-  padding:0 12px;
-  border:1px solid #ddd;
-  border-radius:6px;
-  background:#fafafa;
-  outline:none;
+    width:100%;
+    height:46px;
+    margin-bottom:10px;
+    padding:0 12px;
+    border:1px solid #ddd;
+    border-radius:6px;
+    background:#fafafa;
+    outline:none;
 }
 
-.password-box{
-  position:relative;
+.passwordBox{
+    position:relative;
 }
 
-.password-box input{
-  padding-right:60px;
+.passwordBox input{
+    padding-right:65px;
 }
 
-.show{
-  position:absolute;
-  right:5px;
-  top:0;
-  height:45px;
-  border:0;
-  background:none;
-  font-weight:bold;
-  cursor:pointer;
+.showPassword{
+    position:absolute;
+    right:5px;
+    top:0;
+    height:46px;
+    border:0;
+    background:none;
+    font-weight:bold;
 }
 
-.login-btn{
-  width:100%;
-  margin-top:5px;
-  padding:12px;
-  border:0;
-  border-radius:7px;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
-  background:linear-gradient(
-    90deg,
-    #833ab4,
-    #e1306c,
-    #fd1d1d,
-    #f77737
-  );
+.loginButton{
+    width:100%;
+    height:44px;
+    border:0;
+    border-radius:7px;
+    color:white;
+    font-weight:bold;
+    background:linear-gradient(
+        90deg,
+        #833ab4,
+        #e1306c,
+        #fd1d1d,
+        #f77737
+    );
 }
 
-.notice{
-  margin-top:18px;
-  padding:12px;
-  background:#fff7ed;
-  border-radius:8px;
-  font-size:11px;
-  line-height:1.5;
-  color:#7c2d12;
+.warning{
+    margin-top:18px;
+    padding:12px;
+    border-radius:8px;
+    background:#fff7ed;
+    color:#7c2d12;
+    font-size:11px;
+    line-height:1.5;
 }
 
 
-/* =========================
-   SOCIAL APP
-========================= */
+/* ==============================
+   APP
+============================== */
 
 #app{
-  display:none;
-  min-height:100vh;
-  background:#fafafa;
+    display:none;
+    min-height:100vh;
+    background:#000;
 }
 
-.topbar{
-  height:60px;
-  background:white;
-  border-bottom:1px solid #ddd;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 18px;
-  position:sticky;
-  top:0;
-  z-index:20;
-}
-
-.top-logo{
-  font-family:cursive;
-  font-size:27px;
-  font-weight:bold;
-}
-
-.top-icons{
-  display:flex;
-  gap:18px;
-  font-size:23px;
-}
-
-.app-container{
-  width:100%;
-  max-width:600px;
-  margin:auto;
-  padding-bottom:80px;
+.phone{
+    width:100%;
+    max-width:520px;
+    min-height:100vh;
+    margin:auto;
+    background:#000;
+    position:relative;
+    padding-bottom:65px;
 }
 
 
-/* =========================
+/* ==============================
+   TOP BAR
+============================== */
+
+.topBar{
+    height:58px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 15px;
+    background:#000;
+    border-bottom:1px solid #171717;
+    position:sticky;
+    top:0;
+    z-index:20;
+}
+
+.add{
+    font-size:31px;
+    font-weight:200;
+}
+
+.logo{
+    font-family:cursive;
+    font-size:29px;
+    font-weight:bold;
+}
+
+.heart{
+    font-size:29px;
+    font-weight:200;
+}
+
+
+/* ==============================
    STORIES
-========================= */
+============================== */
 
 .stories{
-  display:flex;
-  gap:15px;
-  overflow-x:auto;
-  background:white;
-  border-bottom:1px solid #ddd;
-  padding:15px;
+    height:112px;
+    display:flex;
+    gap:15px;
+    padding:11px 13px;
+    overflow-x:auto;
+    border-bottom:1px solid #151515;
 }
 
 .stories::-webkit-scrollbar{
-  display:none;
+    display:none;
 }
 
 .story{
-  min-width:65px;
-  text-align:center;
-  font-size:11px;
+    min-width:67px;
+    text-align:center;
+    font-size:11px;
+    color:#eee;
+    white-space:nowrap;
+    overflow:hidden;
 }
 
-.story-pic{
-  width:58px;
-  height:58px;
-  margin:auto;
-  border-radius:50%;
-  padding:3px;
-  background:linear-gradient(
-    45deg,
-    #feda75,
-    #fa7e1e,
-    #d62976,
-    #962fbf,
-    #4f5bd5
-  );
+.storyCircle{
+    width:67px;
+    height:67px;
+    border-radius:50%;
+    padding:3px;
+    margin-bottom:5px;
+
+    background:linear-gradient(
+        45deg,
+        #feda75,
+        #fa7e1e,
+        #d62976,
+        #962fbf,
+        #4f5bd5
+    );
 }
 
-.story-pic div{
-  width:100%;
-  height:100%;
-  border-radius:50%;
-  background:#ddd;
-  border:3px solid white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:24px;
+.storyInner{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    border:3px solid #000;
+    background:#252525;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:29px;
+}
+
+.yourStory{
+    position:relative;
+}
+
+.plus{
+    position:absolute;
+    right:0;
+    bottom:1px;
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    background:#fff;
+    color:#000;
+    border:2px solid #000;
+    font-size:17px;
+    line-height:17px;
 }
 
 
-/* =========================
+/* ==============================
    POST
-========================= */
+============================== */
 
 .post{
-  background:white;
-  border:1px solid #ddd;
-  margin-top:15px;
+    background:#000;
+    border-bottom:1px solid #171717;
 }
 
-.post-header{
-  display:flex;
-  align-items:center;
-  padding:10px 12px;
-  gap:10px;
+.postHeader{
+    height:57px;
+    display:flex;
+    align-items:center;
+    padding:7px 12px;
 }
 
-.avatar{
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#ff9966,#ff5e62);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
-  font-weight:bold;
+.postAvatar{
+    width:39px;
+    height:39px;
+    border-radius:50%;
+    padding:2px;
+
+    background:linear-gradient(
+        45deg,
+        #feda75,
+        #fa7e1e,
+        #d62976,
+        #962fbf
+    );
 }
 
-.username{
-  font-weight:bold;
-  font-size:14px;
+.avatarInside{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    background:#292929;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:19px;
 }
 
-.location{
-  font-size:11px;
-  color:#777;
+.postUser{
+    margin-left:9px;
+    font-size:13px;
+    font-weight:bold;
 }
 
-.more{
-  margin-left:auto;
-  font-size:20px;
+.verified{
+    color:#3295ff;
 }
 
-.post-image{
-  width:100%;
-  aspect-ratio:1/1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:80px;
-  background:linear-gradient(
-    135deg,
-    #c2e9fb,
-    #a1c4fd
-  );
-}
-
-.post:nth-of-type(2) .post-image{
-  background:linear-gradient(
-    135deg,
-    #fbc2eb,
-    #a6c1ee
-  );
-}
-
-.post-actions{
-  display:flex;
-  gap:18px;
-  padding:12px;
-  font-size:24px;
-}
-
-.bookmark{
-  margin-left:auto;
-}
-
-.post-info{
-  padding:0 12px 15px;
-  font-size:13px;
-  line-height:1.5;
-}
-
-.likes{
-  font-weight:bold;
-  margin-bottom:5px;
+.postMore{
+    margin-left:auto;
+    font-size:20px;
+    letter-spacing:2px;
 }
 
 
-/* =========================
-   REELS
-========================= */
+/* ==============================
+   POST IMAGE
+============================== */
 
-.section-title{
-  padding:18px 15px 5px;
-  font-size:20px;
-  font-weight:bold;
+.postImage{
+    width:100%;
+    aspect-ratio:1 / 1;
+    background:
+        linear-gradient(
+            145deg,
+            #101010,
+            #292929 50%,
+            #090909
+        );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
 }
 
-.reel{
-  margin:15px;
-  height:430px;
-  border-radius:12px;
-  overflow:hidden;
-  position:relative;
-  background:linear-gradient(
-    160deg,
-    #111827,
-    #4c1d95,
-    #be185d
-  );
-  color:white;
-}
-
-.reel-content{
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  font-size:70px;
-}
-
-.reel-title{
-  font-size:18px;
-  margin-top:10px;
-}
-
-.reel-actions{
-  position:absolute;
-  right:12px;
-  bottom:25px;
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-  font-size:25px;
-  text-align:center;
-}
-
-.reel-actions span{
-  font-size:11px;
-}
-
-
-/* =========================
-   EXPLORE
-========================= */
-
-.explore-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:3px;
-  padding:15px;
-}
-
-.explore-item{
-  aspect-ratio:1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:45px;
-  background:linear-gradient(
-    135deg,
-    #dbeafe,
-    #fbcfe8
-  );
-}
-
-
-/* =========================
-   BOTTOM NAV
-========================= */
-
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:60px;
-  background:white;
-  border-top:1px solid #ddd;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  z-index:30;
-}
-
-.nav-btn{
-  border:0;
-  background:none;
-  font-size:23px;
-  cursor:pointer;
-}
-
-.nav-btn.active{
-  font-weight:bold;
-}
-
-
-/* =========================
-   SECURITY PANEL
-========================= */
-
-.security-panel{
-  margin:15px;
-  padding:15px;
-  border-radius:10px;
-  background:#fff7ed;
-  color:#7c2d12;
-  font-size:12px;
-  line-height:1.5;
-}
-
-.logout{
-  width:calc(100% - 30px);
-  margin:0 15px 20px;
-  padding:11px;
-  border:1px solid #ccc;
-  border-radius:7px;
-  background:white;
-  font-weight:bold;
-  cursor:pointer;
-}
-</style>
-</head>
-
-
-<body>
-
-
-<!-- =================================
-     LOGIN PAGE
-================================= -->
-
-<div id="loginPage">
-
-<div class="login-card">
-
-<div class="logo">
-Instagram
-</div>
-
-<div class="training">
-FICTIONAL SECURITY TRAINING SIMULATION
-</div>
-
-<form id="loginForm">
-
-<input
-id="username"
-type="text"
-placeholder="Username, email or phone"
-autocomplete="off"
->
-
-<div class="password-box">
-
-<input
-id="password"
-type="password"
-placeholder="Password"
-autocomplete="off"
->
-
-<button
-type="button"
-class="show"
-id="showPassword">
-Show
-</button>
-
-</div>
-
-<button
-class="login-btn"
-type="submit">
-Log in
-</button>
-
-</form>
-
-<div class="notice">
-<strong>Training only.</strong><br>
-Use dummy credentials. Login information is not
-saved, transmitted, logged, or sent anywhere.
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =================================
-     SOCIAL MEDIA APP
-================================= -->
-
-<div id="app">
-
-<header class="topbar">
-
-<div class="top-logo">
-Instagram
-</div>
-
-<div class="top-icons">
-<span>♡</span>
-<span>✉</span>
-</div>
-
-</header>
-
-
-<div class="app-container">
-
-
-<!-- STORIES -->
-
-<div class="stories">
-
-<div class="story">
-<div class="story-pic">
-<div>😊</
-
+.postImage::before{
+    content:"";
+    position:absolute;
+    width:75%;
+    height:75%;
+    border-radius:50%;
+    background:
+        radial-gradient(
+            circle,
+            #164e63,
+            #063b4c 35%,
+            #020617 
 
