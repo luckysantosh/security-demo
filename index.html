@@ -2,277 +2,521 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Social Login Security Demo</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PhotoShare Security Training</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:#fafafa;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:#262626;
+  padding:20px;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: #fafafa;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  color: #262626;
+.wrap{
+  width:100%;
+  max-width:400px;
+  margin:auto;
 }
 
-.container {
-  width: 100%;
-  max-width: 390px;
+.badge{
+  text-align:center;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.8px;
+  color:#777;
+  margin:12px 0 18px;
 }
 
-.training {
-  text-align: center;
-  margin-bottom: 18px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .8px;
-  color: #777;
+.card{
+  background:#fff;
+  border:1px solid #ddd;
+  padding:32px 28px;
 }
 
-.card {
-  background: #fff;
-  border: 1px solid #dbdbdb;
-  padding: 38px 38px 28px;
+.logo{
+  text-align:center;
+  font-family:cursive;
+  font-size:38px;
+  font-weight:700;
+  margin-bottom:10px;
 }
 
-.logo {
-  text-align: center;
-  font-family: cursive;
-  font-size: 38px;
-  font-weight: 700;
-  margin-bottom: 30px;
+.subtitle{
+  text-align:center;
+  color:#777;
+  font-size:13px;
+  margin-bottom:25px;
+  line-height:1.5;
 }
 
-.subtitle {
-  text-align: center;
-  color: #737373;
-  font-size: 14px;
-  line-height: 1.5;
-  margin-bottom: 22px;
+input{
+  width:100%;
+  height:44px;
+  margin-bottom:9px;
+  padding:0 12px;
+  border:1px solid #ddd;
+  border-radius:5px;
+  background:#fafafa;
+  outline:none;
 }
 
-.field {
-  position: relative;
-  margin-bottom: 8px;
+.password-box{
+  position:relative;
 }
 
-input {
-  width: 100%;
-  height: 42px;
-  border: 1px solid #dbdbdb;
-  border-radius: 3px;
-  background: #fafafa;
-  padding: 0 12px;
-  font-size: 12px;
-  outline: none;
+.password-box input{
+  padding-right:65px;
 }
 
-input:focus {
-  border-color: #999;
+.show{
+  position:absolute;
+  right:5px;
+  top:0;
+  height:44px;
+  border:0;
+  background:transparent;
+  color:#333;
+  font-weight:700;
+  cursor:pointer;
 }
 
-.password-toggle {
-  position: absolute;
-  right: 8px;
-  top: 0;
-  height: 42px;
-  width: auto;
-  margin: 0;
-  padding: 0 6px;
-  background: transparent;
-  color: #262626;
-  font-size: 12px;
-  border: 0;
-  cursor: pointer;
+.login,
+.restart,
+.quiz button{
+  width:100%;
+  border:0;
+  border-radius:7px;
+  padding:12px;
+  font-weight:700;
+  cursor:pointer;
 }
 
-.login {
-  width: 100%;
-  height: 36px;
-  margin-top: 10px;
-  border: 0;
-  border-radius: 8px;
-  background: #333;
-  color: white;
-  font-weight: 700;
-  cursor: pointer;
+.login{
+  margin-top:5px;
+  background:#333;
+  color:white;
 }
 
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin: 25px 0;
-  color: #999;
-  font-size: 12px;
+.notice{
+  margin-top:18px;
+  padding:12px;
+  border-radius:8px;
+  background:#fff8dc;
+  color:#665514;
+  font-size:11px;
+  line-height:1.5;
 }
 
-.divider::before,
-.divider::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: #dbdbdb;
+#lesson{
+  display:none;
+  margin-top:18px;
 }
 
-.help {
-  text-align: center;
-  font-size: 12px;
-  color: #385185;
-  margin-bottom: 22px;
+.section{
+  background:white;
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:18px;
+  margin-bottom:12px;
 }
 
-.warning {
-  background: #fff8dc;
-  border-radius: 8px;
-  padding: 12px;
-  color: #665514;
-  font-size: 11px;
-  line-height: 1.5;
+.section h2{
+  margin-top:0;
+  font-size:19px;
 }
 
-.training-note {
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 12px;
-  margin-top: 12px;
-  font-size: 11px;
-  line-height: 1.5;
-  color: #475569;
+.section h3{
+  font-size:15px;
 }
 
-.footer {
-  text-align: center;
-  margin-top: 14px;
-  font-size: 10px;
-  color: #888;
-  line-height: 1.5;
+.section li{
+  margin-bottom:9px;
+  line-height:1.45;
 }
 
-.reset {
-  display: none;
+.quiz{
+  background:#f5f5f5;
+  border-radius:10px;
+  padding:15px;
+  margin-top:12px;
+}
+
+.question{
+  font-weight:700;
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+.quiz button{
+  margin-top:7px;
+  background:white;
+  border:1px solid #ccc;
+  color:#222;
+}
+
+.feedback{
+  display:none;
+  margin-top:10px;
+  padding:9px;
+  border-radius:6px;
+  background:#e8f5e9;
+  color:#285c2d;
+  font-size:12px;
+}
+
+.score{
+  text-align:center;
+  background:#eef2ff;
+  padding:15px;
+  border-radius:10px;
+  margin-top:15px;
+}
+
+#final{
+  display:none;
+  margin-top:15px;
+  padding:15px;
+  background:#f1f5f9;
+  border-radius:10px;
+  line-height:1.5;
+}
+
+.restart{
+  margin-top:15px;
+  background:#555;
+  color:white;
+}
+
+.footer{
+  text-align:center;
+  color:#888;
+  font-size:10px;
+  margin-top:15px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="wrap">
 
-  <div class="training">
-    SECURITY AWARENESS DEMO
-  </div>
+<div class="badge">SECURITY AWARENESS DEMO</div>
 
-  <div class="card">
+<div class="card">
 
-    <div class="logo">
-      PhotoShare
-    </div>
+<div id="loginScreen">
 
-    <div class="subtitle">
-      Fictional social-media login<br>
-      security simulation
-    </div>
+<div class="logo">PhotoShare</div>
 
-    <form id="loginForm">
+<div class="subtitle">
+Fictional social-media login security simulation
+</div>
 
-      <input
-        id="username"
-        type="text"
-        placeholder="Username, email or phone"
-        autocomplete="off"
-      >
+<form id="loginForm">
 
-      <div class="field">
-        <input
-          id="password"
-          type="password"
-          placeholder="Password"
-          autocomplete="off"
-        >
+<input
+id="username"
+type="text"
+placeholder="Username, email or phone"
+autocomplete="off"
+>
 
-        <button
-          class="password-toggle"
-          type="button"
-          id="togglePassword"
-        >
-          Show
-        </button>
-      </div>
+<div class="password-box">
 
-      <button
-        class="login"
-        type="submit"
-      >
-        Log in
-      </button>
+<input
+id="password"
+type="password"
+placeholder="Password"
+autocomplete="off"
+>
 
-    </form>
-
-    <div class="divider">
-      OR
-    </div>
-
-    <div class="help">
-      Forgot password?
-    </div>
-
-    <div class="warning">
-      <strong>Training only</strong><br>
-      Use dummy information. Never enter a real social-media password
-      into a security-awareness demonstration.
-    </div>
-
-    <div class="training-note">
-      <strong>Privacy:</strong>
-      This page does not send credentials anywhere and does not store
-      them in browser storage, databases, webhooks, or external services.
-    </div>
-
-  </div>
-
-  <div class="footer">
-    Fictional training interface — not affiliated with Instagram or Meta.
-  </div>
+<button
+type="button"
+class="show"
+id="showPassword">
+Show
+</button>
 
 </div>
 
+<button class="login" type="submit">
+Log in
+</button>
+
+</form>
+
+<div class="notice">
+<strong>Training only.</strong><br>
+Use dummy credentials. This demonstration does not save,
+transmit, or collect passwords.
+</div>
+
+</div>
+
+
+<div id="lesson">
+
+<div class="section">
+
+<h2>Security check</h2>
+
+<p>
+A login page can look convincing without being legitimate.
+Before entering sensitive information, inspect the request carefully.
+</p>
+
+</div>
+
+<div class="section">
+
+<h3>Check these warning signs</h3>
+
+<ul>
+<li>Unexpected login request</li>
+<li>Suspicious or unfamiliar website address</li>
+<li>Pressure to act immediately</li>
+<li>Requests for sensitive information</li>
+<li>Unusual wording or formatting</li>
+</ul>
+
+</div>
+
+
+<div class="quiz">
+
+<div class="question">
+1. What should you check before signing in?
+</div>
+
+<button class="answer" data-correct="true">
+The website address
+</button>
+
+<button class="answer" data-correct="false">
+Only the page design
+</button>
+
+<div class="feedback"></div>
+
+</div>
+
+
+<div class="quiz">
+
+<div class="question">
+2. What should you do with an unexpected login request?
+</div>
+
+<button class="answer" data-correct="true">
+Verify it through the official service
+</button>
+
+<button class="answer" data-correct="false">
+Enter your password immediately
+</button>
+
+<div class="feedback"></div>
+
+</div>
+
+
+<div class="quiz">
+
+<div class="question">
+3. Should a real password be used in this demo?
+</div>
+
+<button class="answer" data-correct="false">
+Yes
+</button>
+
+<button class="answer" data-correct="true">
+No
+</button>
+
+<div class="feedback"></div>
+
+</div>
+
+
+<div class="score">
+
+<strong>Training score</strong>
+
+<div id="score">0 / 3</div>
+
+</div>
+
+
+<div id="final">
+
+<strong>Training complete.</strong>
+
+<p id="finalText"></p>
+
+<p>
+Remember: verify unexpected login requests, inspect the website
+address, and never reuse passwords on unfamiliar pages.
+</p>
+
+</div>
+
+<button
+class="restart"
+id="restart"
+type="button">
+Start Again
+</button>
+
+</div>
+
+</div>
+
+<div class="footer">
+Fictional training interface — not affiliated with Instagram or Meta.
+</div>
+
+</div>
+
+
 <script>
+
 const form = document.getElementById("loginForm");
+const loginScreen = document.getElementById("loginScreen");
+const lesson = document.getElementById("lesson");
+
 const password = document.getElementById("password");
-const toggle = document.getElementById("togglePassword");
+const showPassword = document.getElementById("showPassword");
 
-toggle.addEventListener("click", function () {
+const answers = document.querySelectorAll(".answer");
+const scoreDisplay = document.getElementById("score");
+const final = document.getElementById("final");
+const finalText = document.getElementById("finalText");
+const restart = document.getElementById("restart");
 
-  if (password.type === "password") {
+let score = 0;
+let answered = 0;
+const completed = new Set();
+
+
+showPassword.addEventListener("click", function(){
+
+  if(password.type === "password"){
     password.type = "text";
-    toggle.textContent = "Hide";
-  } else {
+    showPassword.textContent = "Hide";
+  }else{
     password.type = "password";
-    toggle.textContent = "Show";
+    showPassword.textContent = "Show";
   }
 
 });
 
-form.addEventListener("submit", function (event) {
+
+form.addEventListener("submit", function(event){
 
   event.preventDefault();
 
   /*
-    SECURITY TRAINING:
-    The entered username and password are deliberately
-    NOT saved, transmitted, logged, or sent anywhere.
-
-    The form simply prevents a real submission.
+    SECURITY:
+    The entered username and password are not saved,
+    transmitted, logged, or sent to any external service.
   */
+
+  loginScreen.style.display = "none";
+  lesson.style.display = "block";
+
+});
+
+
+answers.forEach(function(button){
+
+  button.addEventListener("click", function(){
+
+    const quiz = button.closest(".quiz");
+
+    if(completed.has(quiz)){
+      return;
+    }
+
+    completed.add(quiz);
+    answered++;
+
+    const feedback = quiz.querySelector(".feedback");
+    const buttons = quiz.querySelectorAll("button");
+
+    if(button.dataset.correct === "true"){
+
+      score++;
+      feedback.textContent = "Correct.";
+
+    }else{
+
+      feedback.textContent =
+        "Review the security guidance above.";
+
+    }
+
+    feedback.style.display = "block";
+
+    buttons.forEach(function(item){
+      item.disabled = true;
+    });
+
+    scoreDisplay.textContent =
+      score + " / 3";
+
+
+    if(answered === 3){
+
+      final.style.display = "block";
+
+      finalText.textContent =
+        "You answered " + score +
+        " out of 3 questions correctly.";
+
+    }
+
+  });
+
+});
+
+
+restart.addEventListener("click", function(){
+
+  score = 0;
+  answered = 0;
+  completed.clear();
+
+  scoreDisplay.textContent = "0 / 3";
+
+  final.style.display = "none";
+  finalText.textContent = "";
+
+  answers.forEach(function(button){
+
+    button.disabled = false;
+
+  });
+
+  document.querySelectorAll(".feedback").forEach(function(item){
+
+    item.style.display = "none";
+    item.textContent = "";
+
+  });
+
+  form.reset();
+
+  password.type = "password";
+  showPassword.textContent = "Show";
+
+  lesson.style.display = "none";
+  loginScreen.style.display = "block";
 
 });
 
