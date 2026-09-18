@@ -15,26 +15,37 @@
       place-items: center;
       background: #f6f8fa;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 20px;
     }
 
     .card {
-      width: min(380px, 90%);
+      width: min(420px, 100%);
       padding: 28px;
       background: white;
       border: 1px solid #ddd;
-      border-radius: 18px;
+      border-radius: 20px;
       text-align: center;
       box-shadow: 0 8px 30px rgba(0,0,0,.08);
     }
 
     .badge {
       display: inline-block;
-      padding: 6px 10px;
+      padding: 7px 12px;
       border-radius: 20px;
       background: #fff3cd;
       color: #664d03;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 28px 0 12px;
+      font-size: 34px;
+    }
+
+    p {
+      line-height: 1.5;
+      color: #444;
     }
 
     input, button {
@@ -53,27 +64,50 @@
       border: 0;
       background: #24292f;
       color: white;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     #result {
       display: none;
       margin-top: 20px;
-      padding: 16px;
-      border-radius: 12px;
+      padding: 20px;
+      border-radius: 14px;
       background: #e8f5e9;
       color: #245b2a;
+      text-align: left;
+    }
+
+    .warning {
+      margin-top: 18px;
+      padding: 16px;
+      background: #fff3cd;
+      border-radius: 12px;
+      color: #664d03;
+    }
+
+    ul {
+      padding-left: 20px;
+      line-height: 1.6;
+    }
+
+    .again {
+      background: #555;
+      margin-top: 16px;
     }
   </style>
 </head>
 
 <body>
   <main class="card">
+
     <div class="badge">SECURITY AWARENESS DEMO</div>
 
     <h1>Fictional Login</h1>
 
-    <p>This is a controlled security simulation.</p>
+    <p>
+      This is a controlled security-awareness simulation.
+      Use dummy information only.
+    </p>
 
     <form id="demo">
       <input
@@ -92,19 +126,50 @@
     </form>
 
     <div id="result">
-      <strong>Simulation complete.</strong>
-      <br><br>
-      Nothing was transmitted or stored.
+      <h2>Simulation complete.</h2>
+
+      <p>
+        This demonstration did not transmit or store the information
+        entered into the form.
+      </p>
+
+      <div class="warning">
+        <strong>Phishing red flags to check:</strong>
+
+        <ul>
+          <li>Check the website address carefully.</li>
+          <li>Be cautious with unexpected login requests.</li>
+          <li>Watch for urgency or threats.</li>
+          <li>Never share passwords or verification codes.</li>
+          <li>When unsure, open the service using its official app or website.</li>
+        </ul>
+      </div>
+
+      <button class="again" type="button" id="again">
+        Try Simulation Again
+      </button>
     </div>
+
   </main>
 
   <script>
-    document.querySelector("#demo").addEventListener("submit", function(event) {
-      event.preventDefault();
+    const form = document.querySelector("#demo");
+    const result = document.querySelector("#result");
+    const again = document.querySelector("#again");
 
-      this.style.display = "none";
-      document.querySelector("#result").style.display = "block";
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      form.style.display = "none";
+      result.style.display = "block";
+    });
+
+    again.addEventListener("click", function() {
+      result.style.display = "none";
+      form.style.display = "block";
+      form.reset();
     });
   </script>
+
 </body>
 </html>
+      
