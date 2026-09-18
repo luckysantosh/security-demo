@@ -15,182 +15,335 @@
       place-items: center;
       background: #fafafa;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 20px;
     }
 
     .card {
-      width: min(390px, 92%);
+      width: min(420px, 100%);
       padding: 28px 24px;
       background: white;
       border: 1px solid #ddd;
       border-radius: 16px;
-      text-align: center;
       box-shadow: 0 8px 30px rgba(0,0,0,.08);
     }
+
+    .center { text-align: center; }
 
     .training {
       display: inline-block;
       padding: 7px 12px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       border-radius: 20px;
       background: #fff3cd;
       color: #664d03;
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: .4px;
     }
 
     .logo {
       font-size: 30px;
       font-weight: 700;
-      margin-bottom: 8px;
     }
 
     .subtitle {
       color: #666;
       font-size: 14px;
-      margin-bottom: 24px;
+      margin: 8px 0 24px;
     }
 
-    input {
+    input,
+    button {
       width: 100%;
       padding: 14px;
       margin-top: 10px;
-      border: 1px solid #ccc;
       border-radius: 8px;
-      font-size: 15px;
+      font-size: 16px;
+    }
+
+    input {
+      border: 1px solid #ccc;
       background: #fafafa;
     }
 
     button {
-      width: 100%;
-      padding: 14px;
-      margin-top: 14px;
       border: 0;
-      border-radius: 8px;
       background: #333;
       color: white;
-      font-size: 16px;
       font-weight: 700;
     }
 
-    .warning {
+    .warning,
+    .lesson,
+    .quiz {
       margin-top: 18px;
-      padding: 15px;
+      padding: 16px;
+      border-radius: 12px;
+    }
+
+    .warning {
       background: #fff8dc;
-      border-radius: 10px;
       color: #604c12;
       font-size: 13px;
       line-height: 1.5;
     }
 
+    .lesson {
+      background: #f1f5f9;
+      line-height: 1.5;
+    }
+
+    .quiz {
+      background: #f6f6f6;
+    }
+
+    .question {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .answer {
+      background: white;
+      color: #333;
+      border: 1px solid #ccc;
+    }
+
+    .feedback {
+      display: none;
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 8px;
+      background: #e8f5e9;
+      color: #285c2d;
+    }
+
     #result {
       display: none;
-      margin-top: 20px;
-      padding: 20px;
-      background: #e8f5e9;
+    }
+
+    .score {
+      text-align: center;
+      padding: 16px;
+      margin-top: 18px;
       border-radius: 12px;
-      color: #285c2d;
-      line-height: 1.5;
+      background: #eef2ff;
     }
 
     .reset {
       background: #555;
       margin-top: 18px;
     }
+
+    .notice {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      line-height: 1.5;
+    }
   </style>
 </head>
 
 <body>
 
-  <main class="card">
+<main class="card">
 
-    <div class="training">
-      SECURITY TRAINING DEMO
-    </div>
+  <div class="center">
+    <div class="training">SECURITY TRAINING DEMO</div>
 
     <div class="logo">PhotoShare</div>
 
     <div class="subtitle">
       Fictional social-media login simulation
     </div>
+  </div>
+
+  <section id="login">
+
+    <p class="center">
+      Use dummy information only.
+    </p>
 
     <form id="loginForm">
 
       <input
-        id="username"
         type="text"
         placeholder="Demo username"
         autocomplete="off"
       >
 
       <input
-        id="password"
         type="password"
         placeholder="Demo password"
         autocomplete="off"
       >
 
-      <button type="submit">
-        Log in
-      </button>
+      <button type="submit">Log in</button>
 
     </form>
 
     <div class="warning">
       <strong>Training only</strong><br>
-      Use dummy information. Never enter a real password.
+      Never enter a real password into a security-awareness demo.
     </div>
 
-    <div id="result">
+  </section>
 
-      <h2>Simulation complete.</h2>
+  <section id="result">
+
+    <div class="lesson">
+
+      <h2>Simulation complete</h2>
 
       <p>
-        The information entered was not transmitted
-        or stored.
+        Nothing was transmitted or stored.
       </p>
 
       <p>
-        <strong>Security lesson:</strong><br>
-        Always check the website address before entering
-        login information.
+        Now test your phishing-awareness knowledge.
       </p>
 
-      <button class="reset" onclick="resetDemo()">
-        Try Again
+    </div>
+
+    <div class="quiz">
+
+      <div class="question">
+        1. Should you enter a real password into a training page?
+      </div>
+
+      <button class="answer" data-correct="true">
+        No
       </button>
 
+      <button class="answer" data-correct="false">
+        Yes
+      </button>
+
+      <div class="feedback"></div>
+
     </div>
 
-  </main>
+    <div class="quiz">
 
-  <script>
-    document
-      .getElementById("loginForm")
-      .addEventListener("submit", function(event) {
+      <div class="question">
+        2. What should you check before logging in?
+      </div>
 
-        event.preventDefault();
+      <button class="answer" data-correct="true">
+        The website address
+      </button>
 
-        /*
-          TRAINING SAFETY:
-          The username and password are never sent anywhere.
-          They are not stored in cookies, localStorage,
-          databases, webhooks, or external services.
-        */
+      <button class="answer" data-correct="false">
+        Only how the page looks
+      </button>
 
-        document.getElementById("loginForm").style.display = "none";
-        document.querySelector(".warning").style.display = "none";
-        document.getElementById("result").style.display = "block";
+      <div class="feedback"></div>
+
+    </div>
+
+    <div class="quiz">
+
+      <div class="question">
+        3. What should you do with an unexpected login request?
+      </div>
+
+      <button class="answer" data-correct="true">
+        Verify it through the official service
+      </button>
+
+      <button class="answer" data-correct="false">
+        Enter your password immediately
+      </button>
+
+      <div class="feedback"></div>
+
+    </div>
+
+    <div class="score">
+      <strong>Training score</strong>
+      <div id="score">0 / 3</div>
+    </div>
+
+    <button class="reset" type="button" id="reset">
+      Start Again
+    </button>
+
+    <div class="notice">
+      Local training exercise only.<br>
+      No credentials are collected, transmitted, or stored.
+    </div>
+
+  </section>
+
+</main>
+
+<script>
+  const form = document.getElementById("loginForm");
+  const login = document.getElementById("login");
+  const result = document.getElementById("result");
+  const reset = document.getElementById("reset");
+  const answers = document.querySelectorAll(".answer");
+  const scoreDisplay = document.getElementById("score");
+
+  let score = 0;
+  const completed = new Set();
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    login.style.display = "none";
+    result.style.display = "block";
+  });
+
+  answers.forEach(function(button) {
+    button.addEventListener("click", function() {
+
+      const quiz = button.closest(".quiz");
+      const buttons = quiz.querySelectorAll(".answer");
+      const feedback = quiz.querySelector(".feedback");
+
+      if (completed.has(quiz)) {
+        return;
+      }
+
+      completed.add(quiz);
+
+      if (button.dataset.correct === "true") {
+        score++;
+        feedback.textContent = "Correct.";
+      } else {
+        feedback.textContent =
+          "Not quite. Review the security lesson and try the next question.";
+      }
+
+      feedback.style.display = "block";
+      scoreDisplay.textContent = score + " / 3";
+
+      buttons.forEach(function(item) {
+        item.disabled = true;
       });
+    });
+  });
 
-    function resetDemo() {
-      document.getElementById("loginForm").reset();
+  reset.addEventListener("click", function() {
+    score = 0;
+    completed.clear();
 
-      document.getElementById("loginForm").style.display = "block";
-      document.querySelector(".warning").style.display = "block";
-      document.getElementById("result").style.display = "none";
-    }
-  </script>
+    scoreDisplay.textContent = "0 / 3";
+
+    answers.forEach(function(button) {
+      button.disabled = false;
+    });
+
+    document.querySelectorAll(".feedback").forEach(function(item) {
+      item.style.display = "none";
+      item.textContent = "";
+    });
+
+    result.style.display = "none";
+    login.style.display = "block";
+    form.reset();
+  });
+</script>
 
 </body>
 </html>
