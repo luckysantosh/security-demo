@@ -1,153 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>PhotoShare Training</title>
 
 <style>
+
 *{
     box-sizing:border-box;
 }
 
-html,body{
+body{
     margin:0;
-    padding:0;
-    width:100%;
-    min-height:100%;
-    font-family:Arial,sans-serif;
+    font-family:Arial, sans-serif;
+    background:#fafafa;
 }
 
 /* LOGIN */
 
-#loginPage{
+#login{
     min-height:100vh;
-    background:#fafafa;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     padding:20px;
 }
 
-.loginBox{
+.login-box{
     width:100%;
-    max-width:380px;
+    max-width:360px;
     background:white;
     border:1px solid #ddd;
     padding:30px;
     border-radius:8px;
 }
 
-.loginLogo{
+.logo{
     text-align:center;
     font-family:cursive;
-    font-size:42px;
+    font-size:40px;
     font-weight:bold;
-    margin-bottom:10px;
-}
-
-.training{
-    text-align:center;
-    color:#777;
-    font-size:11px;
     margin-bottom:25px;
 }
 
-.input{
+input{
+    display:block;
     width:100%;
     height:45px;
-    padding:0 12px;
     margin-bottom:10px;
-    border:1px solid #ddd;
+    padding:10px;
+    border:1px solid #ccc;
     border-radius:6px;
-    background:#fafafa;
 }
 
-.passwordArea{
-    position:relative;
+button{
+    cursor:pointer;
 }
 
-.passwordArea .input{
-    padding-right:65px;
-}
-
-.showBtn{
-    position:absolute;
-    right:5px;
-    top:0;
-    height:45px;
-    border:0;
-    background:transparent;
-    font-weight:bold;
-}
-
-.loginBtn{
+.login-button{
     width:100%;
-    height:45px;
+    height:44px;
     border:0;
-    border-radius:7px;
+    border-radius:6px;
+    background:#e1306c;
     color:white;
     font-weight:bold;
-    background:linear-gradient(
-        90deg,
-        #833ab4,
-        #e1306c,
-        #fd1d1d,
-        #f77737
-    );
 }
 
-.notice{
-    margin-top:18px;
-    padding:12px;
-    background:#fff7ed;
-    color:#7c2d12;
-    border-radius:7px;
+.demo{
+    margin-top:15px;
+    padding:10px;
+    background:#fff3cd;
+    color:#664d03;
     font-size:11px;
+    border-radius:6px;
     line-height:1.5;
 }
 
 
-/* APP */
+/* FEED */
 
-#app{
+#feed{
     display:none;
     min-height:100vh;
     background:#000;
-    color:#fff;
-}
-
-.feed{
-    width:100%;
-    max-width:520px;
-    margin:auto;
+    color:white;
     padding-bottom:70px;
 }
 
 
-/* TOP */
+/* HEADER */
 
-.top{
-    height:58px;
+.header{
+    height:60px;
+    background:#000;
+    border-bottom:1px solid #222;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:0 15px;
-    background:#000;
-    border-bottom:1px solid #222;
+
     position:sticky;
     top:0;
     z-index:10;
 }
 
-.instagram{
+.header-logo{
     font-family:cursive;
     font-size:28px;
     font-weight:bold;
 }
 
-.topIcon{
-    font-size:27px;
+.header-icon{
+    font-size:28px;
 }
 
 
@@ -155,11 +124,10 @@ html,body{
 
 .stories{
     display:flex;
-    gap:14px;
+    gap:15px;
     overflow-x:auto;
     padding:12px;
-    height:108px;
-    border-bottom:1px solid #181818;
+    border-bottom:1px solid #222;
 }
 
 .story{
@@ -168,11 +136,13 @@ html,body{
     font-size:10px;
 }
 
-.storyRing{
-    width:64px;
-    height:64px;
-    padding:3px;
+.story-circle{
+    width:62px;
+    height:62px;
     border-radius:50%;
+    padding:3px;
+    margin-bottom:5px;
+
     background:linear-gradient(
         45deg,
         #feda75,
@@ -181,18 +151,19 @@ html,body{
         #962fbf,
         #4f5bd5
     );
-    margin-bottom:5px;
 }
 
-.storyPhoto{
+.story-inner{
     width:100%;
     height:100%;
     border-radius:50%;
+    border:3px solid black;
     background:#333;
-    border:3px solid #000;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     font-size:25px;
 }
 
@@ -203,31 +174,28 @@ html,body{
     border-bottom:1px solid #222;
 }
 
-.postHeader{
+.post-header{
     height:55px;
     display:flex;
     align-items:center;
-    padding:7px 12px;
+    padding:8px 12px;
 }
 
 .avatar{
     width:38px;
     height:38px;
     border-radius:50%;
-    background:linear-gradient(
-        45deg,
-        #feda75,
-        #d62976,
-        #4f5bd5
-    );
+    background:#333;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     font-size:20px;
 }
 
-.user{
-    margin-left:9px;
+.username{
+    margin-left:10px;
     font-size:13px;
     font-weight:bold;
 }
@@ -238,37 +206,38 @@ html,body{
 }
 
 
-/* IMAGE */
+/* POST IMAGE */
 
-.postImage{
+.post-image{
     width:100%;
-    aspect-ratio:1/1;
+    aspect-ratio:1 / 1;
+
     background:
-        radial-gradient(
-            circle at center,
-            #075985 0%,
-            #082f49 28%,
-            #020617 60%,
-            #000 100%
-        );
+    radial-gradient(
+        circle,
+        #075985,
+        #082f49 40%,
+        #000
+    );
+
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     text-align:center;
 }
 
-.postTitle{
+.title{
+    color:#ff2222;
     font-size:34px;
     font-weight:900;
-    color:#ff2929;
-    text-shadow:0 3px 8px #000;
+    text-shadow:0 3px 6px #000;
 }
 
-.postSub{
-    margin-top:15px;
+.subtitle{
+    color:#ffe600;
     font-size:17px;
     font-weight:bold;
-    color:#ffe600;
+    margin-top:15px;
 }
 
 
@@ -277,8 +246,8 @@ html,body{
 .actions{
     display:flex;
     gap:18px;
-    padding:10px 12px 5px;
-    font-size:26px;
+    padding:10px 12px;
+    font-size:27px;
 }
 
 .save{
@@ -296,29 +265,28 @@ html,body{
 
 .likes{
     font-weight:bold;
-    margin-bottom:5px;
-}
-
-.gray{
-    color:#888;
 }
 
 
-/* SECOND POST */
+/* SECOND IMAGE */
 
-.secondImage{
+.second-image{
     width:100%;
-    aspect-ratio:1/1;
-    background:linear-gradient(
+    aspect-ratio:1 / 1;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:80px;
+
+    background:
+    linear-gradient(
         135deg,
         #111827,
         #312e81,
         #831843
     );
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:80px;
 }
 
 
@@ -326,66 +294,482 @@ html,body{
 
 .security{
     margin:15px 12px;
-    padding:14px;
+    padding:15px;
+
+    background:#151515;
     border:1px solid #292929;
     border-radius:8px;
-    background:#111;
-    color:#bbb;
+
+    color:#aaa;
     font-size:11px;
     line-height:1.5;
 }
 
 
-/* LOGOUT */
-
-.logout{
-    width:calc(100% - 24px);
-    margin:0 12px 20px;
-    padding:11px;
-    border:1px solid #444;
-    border-radius:7px;
-    background:#111;
-    color:white;
-    font-weight:bold;
-}
-
-
-/* BOTTOM */
+/* NAVIGATION */
 
 .bottom{
     position:fixed;
+    bottom:0;
     left:0;
     right:0;
-    bottom:0;
+
     height:60px;
+
     background:#000;
     border-top:1px solid #222;
+
     display:flex;
     justify-content:space-around;
     align-items:center;
-    z-index:20;
-}
 
-.bottom span{
     font-size:26px;
 }
+
 </style>
 </head>
+
 
 <body>
 
 
 <!-- =========================
-     LOGIN PAGE
+     LOGIN SCREEN
 ========================= -->
 
-<div id="loginPage">
+<div id="login">
 
-    <div class="loginBox">
+    <div class="login-box">
 
-        <div class="loginLogo">
+        <div class="logo">
             Instagram
         </div>
 
-        <div 
+        <form id="loginForm">
+
+            <input
+                id="username"
+                type="text"
+                placeholder="Username, email or phone"
+            >
+
+            <input
+                id="password"
+                type="password"
+                placeholder="Password"
+            >
+
+            <button
+                class="login-button"
+                type="submit">
+
+                Log in
+
+            </button>
+
+        </form>
+
+
+        <div class="demo">
+
+            <b>Security training demo</b><br>
+
+            Use dummy credentials only.
+            The entered credentials are discarded
+            and are not stored or transmitted.
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     FEED
+========================= -->
+
+<div id="feed">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="header-icon">
+            ＋
+        </div>
+
+        <div class="header-logo">
+            Instagram
+        </div>
+
+        <div class="header-icon">
+            ♡
+        </div>
+
+    </div>
+
+
+
+    <!-- STORIES -->
+
+    <div class="stories">
+
+        <div class="story">
+
+            <div class="story-circle">
+
+                <div class="story-inner">
+                    👤
+                </div>
+
+            </div>
+
+            Your story
+
+        </div>
+
+
+        <div class="story">
+
+            <div class="story-circle">
+
+                <div class="story-inner">
+                    🌳
+                </div>
+
+            </div>
+
+            mr_demo
+
+        </div>
+
+
+        <div class="story">
+
+            <div class="story-circle">
+
+                <div class="story-inner">
+                    👩
+                </div>
+
+            </div>
+
+            lifestyle
+
+        </div>
+
+
+        <div class="story">
+
+            <div class="story-circle">
+
+                <div class="story-inner">
+                    🎮
+                </div>
+
+            </div>
+
+            gaming
+
+        </div>
+
+
+        <div class="story">
+
+            <div class="story-circle">
+
+                <div class="story-inner">
+                    🎵
+                </div>
+
+            </div>
+
+            music
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         POST 1
+    ========================= -->
+
+    <div class="post">
+
+        <div class="post-header">
+
+            <div class="avatar">
+                🧑
+            </div>
+
+            <div class="username">
+                addicted_to_memes
+            </div>
+
+            <div class="more">
+                •••
+            </div>
+
+        </div>
+
+
+        <div class="post-image">
+
+            <div>
+
+                <div class="title">
+                    THE PARADISE
+                </div>
+
+                <div class="subtitle">
+                    PAKKA TELANGANA<br>
+                    MADNESS LOADING
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="actions">
+
+            <span>♡</span>
+            <span>💬</span>
+            <span>➤</span>
+
+            <span class="save">
+                🔖
+            </span>
+
+        </div>
+
+
+        <div class="caption">
+
+            <div class="likes">
+                2,341 likes
+            </div>
+
+            <b>addicted_to_memes</b>
+            Chalu Ee statement chalu 🔥🔥
+
+            <br>
+
+            <span style="color:#777">
+                View all 68 comments
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         POST 2
+    ========================= -->
+
+    <div class="post">
+
+        <div class="post-header">
+
+            <div class="avatar">
+                💻
+            </div>
+
+            <div class="username">
+                tech_demo
+            </div>
+
+            <div class="more">
+                •••
+            </div>
+
+        </div>
+
+
+        <div class="second-image">
+            🚀
+        </div>
+
+
+        <div class="actions">
+
+            <span>♡</span>
+            <span>💬</span>
+            <span>➤</span>
+
+            <span class="save">
+                🔖
+            </span>
+
+        </div>
+
+
+        <div class="caption">
+
+            <div class="likes">
+                987 likes
+            </div>
+
+            <b>tech_demo</b>
+            Building something new 🚀
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         REEL
+    ========================= -->
+
+    <div class="post">
+
+        <div class="post-header">
+
+            <div class="avatar">
+                🎬
+            </div>
+
+            <div class="username">
+                reels_demo
+            </div>
+
+        </div>
+
+
+        <div class="second-image">
+            ▶️
+        </div>
+
+
+        <div class="actions">
+
+            <span>♡</span>
+            <span>💬</span>
+            <span>➤</span>
+
+            <span class="save">
+                🔖
+            </span>
+
+        </div>
+
+
+        <div class="caption">
+
+            <b>Security awareness reel</b>
+
+            <br>
+
+            Fictional training content.
+
+        </div>
+
+    </div>
+
+
+
+    <!-- SECURITY MESSAGE -->
+
+    <div class="security">
+
+        <b>🔐 SECURITY TRAINING</b>
+
+        <br><br>
+
+        This is a fictional social-media interface.
+        The credentials entered on the previous screen
+        were discarded and were not saved.
+
+    </div>
+
+
+
+    <!-- BOTTOM NAV -->
+
+    <div class="bottom">
+
+        <span>⌂</span>
+
+        <span>⌕</span>
+
+        <span>＋</span>
+
+        <span>▶</span>
+
+        <span>👤</span>
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+/* Get elements */
+
+var loginForm =
+    document.getElementById("loginForm");
+
+var login =
+    document.getElementById("login");
+
+var feed =
+    document.getElementById("feed");
+
+var username =
+    document.getElementById("username");
+
+var password =
+    document.getElementById("password");
+
+
+/* Login */
+
+loginForm.addEventListener(
+    "submit",
+    function(event){
+
+        event.preventDefault();
+
+        /*
+        Dummy login only.
+
+        Do not store the credentials.
+        */
+
+        username.value = "";
+        password.value = "";
+
+
+        /* Hide login */
+
+        login.style.display = "none";
+
+
+        /* Show feed */
+
+        feed.style.display = "block";
+
+
+        window.scrollTo(0,0);
+
+    }
+);
+
+</script>
+
+</body>
+                </html>
+
 
