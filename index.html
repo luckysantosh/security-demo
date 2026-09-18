@@ -1,382 +1,8 @@
-.nav-actions button {
-  border: 0;
-  background: none;
-  cursor: pointer;
-}
-
-.content {
-  width: min(600px, 100%);
-  margin: 20px auto;
-}
-
-/* STORIES */
-.stories {
-  display: flex;
-  gap: 15px;
-  overflow-x: auto;
-  padding: 12px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-}
-
-.story {
-  min-width: 65px;
-  text-align: center;
-  font-size: 11px;
-}
-
-.story-img {
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto auto 5px;
-  background: linear-gradient(135deg,#feda75,#d62976,#4f5bd5);
-  color: white;
-  font-size: 24px;
-  border: 3px solid white;
-  outline: 2px solid #d62976;
-}
-
-/* POSTS */
-.post {
-  background: white;
-  border: 1px solid #ddd;
-  margin-top: 20px;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.post-header {
-  display: flex;
-  align-items: center;
-  padding: 12px;
-  gap: 10px;
-}
-
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg,#4f5bd5,#d62976,#feda75);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-weight: bold;
-}
-
-.username {
-  font-weight: bold;
-}
-
-.post-image {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  display: block;
-}
-
-.post-actions {
-  display: flex;
-  gap: 17px;
-  padding: 12px;
-  font-size: 25px;
-}
-
-.post-actions button {
-  border: 0;
-  background: none;
-  cursor: pointer;
-}
-
-.likes {
-  padding: 0 12px 8px;
-  font-weight: bold;
-}
-
-.caption {
-  padding: 0 12px 15px;
-}
-
-.comment-box {
-  border-top: 1px solid #eee;
-  display: flex;
-}
-
-.comment-box input {
-  flex: 1;
-  padding: 13px;
-  border: 0;
-  outline: none;
-}
-
-.comment-box button {
-  border: 0;
-  background: white;
-  color: #1877f2;
-  font-weight: bold;
-  padding: 0 15px;
-}
-
-/* MOBILE */
-@media(max-width:600px) {
-  .navbar {
-    padding: 0 12px;
-  }
-
-  .content {
-    margin-top: 10px;
-  }
-
-  .post {
-    border-left: 0;
-    border-right: 0;
-    border-radius: 0;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<!-- LOGIN PAGE -->
-<section id="loginPage">
-
-  <div class="login-box">
-
-    <div class="logo">PhotoShare</div>
-
-    <input
-      id="usernameInput"
-      type="text"
-      placeholder="Username or email"
-      autocomplete="off"
-    >
-
-    <input
-      id="passwordInput"
-      type="password"
-      placeholder="Password"
-      autocomplete="off"
-    >
-
-    <button class="login-btn" onclick="login()">
-      Log In
-    </button>
-
-    <div class="demo-note">
-      Demo only — no login information is transmitted.
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- MAIN APP -->
-<section id="app" class="hidden">
-
-  <nav class="navbar">
-
-    <div class="nav-logo">
-      PhotoShare
-    </div>
-
-    <div class="nav-actions">
-      <button onclick="alert('Home')">⌂</button>
-      <button onclick="alert('Search')">⌕</button>
-      <button onclick="alert('Messages')">✉</button>
-      <button onclick="logout()">↪</button>
-    </div>
-
-  </nav>
-
-
-  <main class="content">
-
-    <!-- STORIES -->
-    <div class="stories">
-
-      <div class="story">
-        <div class="story-img">+</div>
-        Your story
-      </div>
-
-      <div class="story">
-        <div class="story-img">A</div>
-        alex
-      </div>
-
-      <div class="story">
-        <div class="story-img">S</div>
-        sam
-      </div>
-
-      <div class="story">
-        <div class="story-img">J</div>
-        jordan
-      </div>
-
-      <div class="story">
-        <div class="story-img">M</div>
-        maya
-      </div>
-
-      <div class="story">
-        <div class="story-img">R</div>
-        rohan
-      </div>
-
-    </div>
-
-
-    <!-- POST 1 -->
-    <article class="post">
-
-      <div class="post-header">
-
-        <div class="avatar">A</div>
-
-        <div>
-          <div class="username">alex_demo</div>
-          <small>Hyderabad</small>
-        </div>
-
-      </div>
-
-      <img
-        class="post-image"
-        src="https://picsum.photos/800/800?random=10"
-        alt="Demo post"
-      >
-
-      <div class="post-actions">
-
-        <button onclick="likePost(this)">♡</button>
-
-        <button onclick="focusComment(this)">💬</button>
-
-        <button onclick="alert('Share demo')">➤</button>
-
-      </div>
-
-      <div class="likes">
-        <span class="like-count">124</span> likes
-      </div>
-
-      <div class="caption">
-        <b>alex_demo</b>
-        Beautiful day 🌅
-      </div>
-
-      <div class="comment-box">
-
-        <input
-          type="text"
-          placeholder="Add a comment..."
-        >
-
-        <button onclick="comment(this)">
-          Post
-        </button>
-
-      </div>
-
-    </article>
-
-
-    <!-- POST 2 -->
-    <article class="post">
-
-      <div class="post-header">
-
-        <div class="avatar">S</div>
-
-        <div>
-          <div class="username">sam_demo</div>
-          <small>India</small>
-        </div>
-
-      </div>
-
-      <img
-        class="post-image"
-        src="https://picsum.photos/800/800?random=20"
-        alt="Demo post"
-      >
-
-      <div class="post-actions">
-
-        <button onclick="likePost(this)">♡</button>
-
-        <button onclick="focusComment(this)">💬</button>
-
-        <button onclick="alert('Share demo')">➤</button>
-
-      </div>
-
-      <div class="likes">
-        <span class="like-count">87</span> likes
-      </div>
-
-      <div class="caption">
-        <b>sam_demo</b>
-        Weekend vibes ✨
-      </div>
-
-      <div class="comment-box">
-
-        <input
-          type="text"
-          placeholder="Add a comment..."
-        >
-
-        <button onclick="comment(this)">
-          Post
-        </button>
-
-      </div>
-
-    </article>
-
-
-    <!-- POST 3 -->
-    <article class="post">
-
-      <div class="post-header">
-
-        <div class="avatar">J</div>
-
-        <div>
-          <div class="username">jordan_demo</div>
-          <small>Travel</small>
-        </div>
-
-      </div>
-
-      <img
-        class="post-image"
-        src="https://picsum.photos/800/800?random=30"
-        alt="Demo post"
-      >
-
-      <div class="post-actions">
-
-        <button onclick="likePost(this)">♡</button>
-
-        <button onclick="focusComment(this)">💬</button>
-
-        <button onclick="alert('Share demo')">➤</button>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#ffffff">
 
 <title>PhotoShare</title>
 
@@ -387,28 +13,10 @@
   padding:0;
 }
 
-html,body{
-  width:100%;
-  min-height:100%;
-  background:#fafafa;
-  color:#111;
-  font-family:Arial,Helvetica,sans-serif;
-}
-
 body{
-  overflow-x:hidden;
-}
-
-button,input{
-  font-family:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.hidden{
-  display:none!important;
+  background:#05070b;
+  color:white;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
 /* ================= LOGIN ================= */
@@ -418,94 +26,168 @@ button{
   display:flex;
   justify-content:center;
   align-items:center;
-  background:#fff;
+  padding:20px;
+  background:
+    radial-gradient(circle at 20% 20%,#39205f,transparent 35%),
+    radial-gradient(circle at 80% 80%,#42152f,transparent 35%),
+    #05070b;
 }
 
 .login-card{
-  width:350px;
-  max-width:92%;
+  width:390px;
+  max-width:100%;
   padding:35px 28px;
-  border:1px solid #ddd;
-  background:white;
+  border:1px solid #303746;
+  border-radius:28px;
+  background:#101318;
   text-align:center;
+  box-shadow:0 30px 80px #000;
+}
+
+.logo{
+  width:82px;
+  height:82px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:24px;
+  font-size:45px;
+  background:linear-gradient(
+    135deg,
+    #ffdf73,
+    #ff2d75,
+    #9b35ff,
+    #3d8cff
+  );
 }
 
 .brand{
-  font-size:34px;
-  font-weight:800;
-  margin-bottom:30px;
-  letter-spacing:-1px;
+  margin-top:15px;
+  font-size:29px;
+  font-weight:bold;
+}
+
+.subtitle{
+  margin:8px 0 25px;
+  color:#9da4b0;
+  font-size:13px;
 }
 
 .login-card input{
   width:100%;
-  height:45px;
-  margin:5px 0;
-  padding:0 12px;
-  border:1px solid #ccc;
-  border-radius:6px;
-  background:#fafafa;
+  height:52px;
+  margin:7px 0;
+  padding:0 15px;
+  border:1px solid #343b48;
+  border-radius:14px;
+  background:#181c24;
+  color:white;
   outline:none;
 }
 
 .login-card input:focus{
-  border-color:#888;
+  border-color:#a23cff;
 }
 
-.login-button{
+.primary{
   width:100%;
-  height:45px;
-  margin-top:12px;
+  height:52px;
+  margin-top:10px;
   border:0;
-  border-radius:6px;
-  background:#1877f2;
+  border-radius:14px;
   color:white;
   font-weight:bold;
+  background:linear-gradient(
+    100deg,
+    #ff2d75,
+    #9b35ff
+  );
+  cursor:pointer;
 }
 
-.demo-text{
-  color:#777;
-  font-size:12px;
-  margin-top:20px;
+.demo{
+  margin-top:15px;
+  color:#737b88;
+  font-size:11px;
 }
 
 /* ================= APP ================= */
 
 #app{
   min-height:100vh;
-  padding-bottom:65px;
+}
+
+.hidden{
+  display:none !important;
 }
 
 .topbar{
-  height:60px;
-  background:#fff;
-  border-bottom:1px solid #ddd;
   position:sticky;
   top:0;
-  z-index:20;
+  z-index:100;
+  height:66px;
+
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
+
   padding:0 18px;
+
+  border-bottom:1px solid #242932;
+
+  background:#080a0eef;
+  backdrop-filter:blur(20px);
 }
 
 .top-brand{
-  font-size:23px;
-  font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:22px;
+  font-weight:bold;
 }
 
-.top-icons{
+.mini-logo{
+  width:38px;
+  height:38px;
   display:flex;
-  gap:17px;
+  align-items:center;
+  justify-content:center;
+  border-radius:11px;
+  font-size:22px;
+
+  background:linear-gradient(
+    135deg,
+    #ffdf73,
+    #ff2d75,
+    #9b35ff
+  );
+}
+
+.top-actions{
+  display:flex;
+  gap:8px;
 }
 
 .icon-btn{
-  border:0;
-  background:none;
-  font-size:23px;
+  width:42px;
+  height:42px;
+  border:1px solid #2d333e;
+  border-radius:50%;
+  background:#11151c;
+  color:white;
+  font-size:22px;
+  cursor:pointer;
 }
 
-/* ================= PAGES ================= */
+/* ================= CONTENT ================= */
+
+.layout{
+  width:min(1180px,100%);
+  margin:auto;
+  padding:15px 12px 90px;
+}
 
 .page{
   display:none;
@@ -515,186 +197,197 @@ button{
   display:block;
 }
 
-.feed{
-  width:100%;
-  max-width:600px;
-  margin:auto;
-}
-
 /* ================= STORIES ================= */
 
 .stories{
-  background:#fff;
-  border-bottom:1px solid #ddd;
   display:flex;
   gap:15px;
-  padding:15px 12px;
   overflow-x:auto;
+  padding:10px 5px 18px;
+}
+
+.stories::-webkit-scrollbar{
+  display:none;
 }
 
 .story{
-  flex:0 0 65px;
+  min-width:75px;
   text-align:center;
   font-size:11px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+  color:#cbd0d8;
 }
 
-.story-ring{
-  width:58px;
-  height:58px;
-  border-radius:50%;
+.avatar-ring{
+  width:68px;
+  height:68px;
   padding:3px;
-  margin:0 auto 5px;
-  background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
-}
+  margin:auto auto 6px;
 
-.story-inner{
-  width:100%;
-  height:100%;
   border-radius:50%;
-  background:#fff;
-  padding:2px;
-}
 
-.story-inner img{
-  width:100%;
-  height:100%;
-  border-radius:50%;
-  object-fit:cover;
-}
-
-.add-story{
-  font-size:29px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#eee;
-  color:#555;
-}
-
-/* ================= POST ================= */
-
-.post{
-  background:#fff;
-  margin:18px 0;
-  border-top:1px solid #ddd;
-  border-bottom:1px solid #ddd;
-}
-
-.post-head{
-  height:58px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:8px 12px;
+  background:linear-gradient(
+    135deg,
+    #ffdf73,
+    #ff2d75,
+    #9b35ff,
+    #3d8cff
+  );
 }
 
 .avatar{
-  width:40px;
-  height:40px;
+  width:100%;
+  height:100%;
   border-radius:50%;
   object-fit:cover;
+  border:3px solid #080a0d;
+}
+
+/* ================= FEED ================= */
+
+.feed{
+  max-width:720px;
+  margin:auto;
+}
+
+.post{
+  margin-bottom:18px;
+
+  background:#0e1116;
+  border:1px solid #252a33;
+  border-radius:18px;
+
+  overflow:hidden;
+}
+
+.post-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:13px;
+}
+
+.post-head .avatar-ring{
+  width:43px;
+  height:43px;
+  margin:0;
 }
 
 .post-user{
-  font-weight:bold;
   font-size:14px;
+  font-weight:bold;
 }
 
-.post-location{
+.post-time{
+  margin-top:3px;
+  color:#7f8794;
   font-size:11px;
-  color:#777;
-  margin-top:2px;
+}
+
+.more{
+  margin-left:auto;
+  border:0;
+  background:none;
+  color:#aab1bc;
+  font-size:20px;
 }
 
 .post-img{
   width:100%;
-  display:block;
   aspect-ratio:1/1;
+  display:block;
   object-fit:cover;
-  background:#eee;
 }
 
-.actions{
+.post-actions{
   display:flex;
-  align-items:center;
-  gap:17px;
-  padding:10px 12px 5px;
+  gap:18px;
+  padding:12px 14px 5px;
 }
 
-.actions button{
+.post-actions button{
   border:0;
   background:none;
-  font-size:26px;
+  color:white;
+  font-size:24px;
+  cursor:pointer;
 }
 
-.actions .save{
+.post-actions .save{
   margin-left:auto;
 }
 
-.liked{
-  color:#ed1c24;
-}
-
 .likes{
-  padding:3px 12px;
-  font-size:14px;
+  padding:0 14px;
+  font-size:13px;
   font-weight:bold;
 }
 
 .caption{
-  padding:6px 12px 12px;
-  font-size:14px;
-}
-
-.caption b{
-  margin-right:5px;
-}
-
-.comments{
-  color:#777;
-  padding:0 12px 10px;
+  padding:7px 14px 16px;
+  color:#d8dce3;
   font-size:13px;
 }
 
-.comment-area{
-  display:flex;
-  border-top:1px solid #eee;
-}
+/* ================= SEARCH ================= */
 
-.comment-area input{
-  flex:1;
-  height:42px;
-  border:0;
-  outline:0;
-  padding:0 12px;
-}
-
-.comment-area button{
-  border:0;
-  background:white;
-  color:#1877f2;
+.section-title{
+  margin:10px 0 16px;
+  font-size:23px;
   font-weight:bold;
-  padding:0 14px;
+}
+
+.searchbox{
+  display:flex;
+  margin-bottom:15px;
+}
+
+.searchbox input{
+  width:100%;
+  padding:13px 15px;
+
+  border:1px solid #2b303a;
+  border-radius:14px;
+
+  background:#151920;
+  color:white;
+  outline:none;
+}
+
+.explore-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:3px;
+}
+
+.tile{
+  aspect-ratio:1;
+  overflow:hidden;
+}
+
+.tile img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
 /* ================= REELS ================= */
 
 .reels{
-  max-width:500px;
+  max-width:430px;
   margin:auto;
 }
 
 .reel{
   position:relative;
-  width:100%;
-  height:calc(100vh - 125px);
+  height:calc(100vh - 155px);
   min-height:500px;
-  background:#111;
+
+  margin-bottom:18px;
+
+  border-radius:18px;
   overflow:hidden;
-  margin-bottom:3px;
+
+  background:#111;
 }
 
 .reel img{
@@ -703,168 +396,146 @@ button{
   object-fit:cover;
 }
 
-.reel-gradient{
+.reel-overlay{
   position:absolute;
-  inset:0;
+  left:0;
+  right:0;
+  bottom:0;
+
+  padding:25px 18px;
+
   background:linear-gradient(
-    transparent 45%,
-    rgba(0,0,0,.75)
+    transparent,
+    #000d
   );
-}
-
-.reel-info{
-  position:absolute;
-  left:15px;
-  bottom:25px;
-  right:80px;
-  color:white;
-}
-
-.reel-info h3{
-  margin-bottom:8px;
-}
-
-.reel-info p{
-  font-size:14px;
-  line-height:1.4;
 }
 
 .reel-actions{
   position:absolute;
   right:12px;
-  bottom:25px;
+  bottom:85px;
+
   display:flex;
   flex-direction:column;
-  gap:18px;
+  gap:12px;
 }
 
 .reel-actions button{
-  width:48px;
-  height:48px;
+  width:45px;
+  height:45px;
+
   border:0;
   border-radius:50%;
-  background:rgba(255,255,255,.15);
+
+  background:#0009;
   color:white;
-  font-size:23px;
+  font-size:20px;
+}
+
+/* ================= CREATE ================= */
+
+.create{
+  max-width:620px;
+  margin:auto;
+}
+
+.create textarea{
+  width:100%;
+  height:150px;
+
+  padding:15px;
+
+  border:1px solid #2b3038;
+  border-radius:15px;
+
+  background:#11151b;
+  color:white;
+
+  resize:none;
+  outline:none;
 }
 
 /* ================= MESSAGES ================= */
 
 .messages{
-  max-width:600px;
+  max-width:700px;
   margin:auto;
-  background:#fff;
-  min-height:calc(100vh - 60px);
 }
 
-.messages-title{
-  padding:20px;
-  font-size:23px;
-  font-weight:bold;
-}
-
-.message{
+.chat{
   display:flex;
   align-items:center;
-  gap:12px;
-  padding:13px 18px;
+  gap:13px;
+
+  padding:14px;
+
+  border-bottom:1px solid #242932;
+
+  cursor:pointer;
 }
 
-.message img{
-  width:52px;
-  height:52px;
-  border-radius:50%;
-  object-fit:cover;
+.chat .avatar-ring{
+  width:55px;
+  height:55px;
+  margin:0;
 }
 
-.message-name{
-  font-weight:bold;
-}
-
-.message-preview{
-  color:#777;
-  font-size:13px;
-  margin-top:4px;
-}
-
-/* ================= SEARCH ================= */
-
-.search-page{
-  max-width:600px;
-  margin:auto;
-  padding:18px;
-}
-
-.search-input{
-  width:100%;
-  height:45px;
-  border:1px solid #ddd;
-  border-radius:10px;
-  padding:0 15px;
-  outline:none;
-}
-
-.search-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:3px;
-  margin-top:15px;
-}
-
-.search-grid img{
-  width:100%;
-  aspect-ratio:1;
-  object-fit:cover;
+.last{
+  margin-top:3px;
+  color:#8e96a2;
+  font-size:12px;
 }
 
 /* ================= PROFILE ================= */
 
 .profile{
-  max-width:600px;
+  max-width:720px;
   margin:auto;
-  padding:25px 18px;
 }
 
 .profile-head{
   display:flex;
   align-items:center;
-  gap:25px;
+  gap:20px;
+  padding:20px 0;
 }
 
-.profile-avatar{
-  width:90px;
-  height:90px;
-  border-radius:50%;
-  object-fit:cover;
+.profile-head .avatar-ring{
+  width:92px;
+  height:92px;
+  margin:0;
 }
 
 .profile-name{
-  font-size:21px;
+  margin-bottom:10px;
+  font-size:20px;
   font-weight:bold;
 }
 
 .stats{
   display:flex;
   gap:25px;
-  margin-top:10px;
-  font-size:14px;
 }
 
-.profile-button{
-  width:100%;
-  height:38px;
-  border:1px solid #ccc;
-  background:#fff;
-  border-radius:7px;
-  margin-top:25px;
-  font-weight:bold;
+.stats b{
+  display:block;
+  font-size:18px;
+}
+
+.stats span{
+  color:#9098a5;
+  font-size:12px;
+}
+
+.bio{
+  margin-bottom:18px;
+  color:#b9bec8;
 }
 
 .profile-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:3px;
-  margin-top:25px;
 }
 
 .profile-grid img{
@@ -873,84 +544,56 @@ button{
   object-fit:cover;
 }
 
-/* ================= STORY VIEWER ================= */
-
-.story-viewer{
-  position:fixed;
-  inset:0;
-  z-index:100;
-  background:#000;
-  display:none;
-  justify-content:center;
-  align-items:center;
-}
-
-.story-viewer.show{
-  display:flex;
-}
-
-.story-viewer img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-}
-
-.close-story{
-  position:absolute;
-  top:18px;
-  right:20px;
-  color:white;
-  background:none;
-  border:0;
-  font-size:35px;
-  z-index:2;
-}
-
 /* ================= BOTTOM NAV ================= */
 
-.bottom-nav{
+.bottom{
   position:fixed;
-  bottom:0;
   left:0;
   right:0;
-  height:60px;
-  background:white;
-  border-top:1px solid #ddd;
-  z-index:50;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
+  bottom:0;
+
+  height:70px;
+
+  z-index:200;
+
+  border-top:1px solid #262b34;
+
+  background:#080a0ef5;
+
+  backdrop-filter:blur(20px);
 }
 
-.bottom-nav button{
+.nav{
+  width:min(700px,100%);
+  height:100%;
+  margin:auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+}
+
+.nav button{
   border:0;
   background:none;
-  font-size:24px;
-  padding:8px;
+  color:#8f97a4;
+
+  font-size:10px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:3px;
+
+  cursor:pointer;
 }
 
-.bottom-nav button.active{
-  font-weight:bold;
+.nav button span{
+  font-size:23px;
 }
 
-/* ================= TOAST ================= */
-
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:75px;
-  transform:translateX(-50%);
-  background:#111;
+.nav button.active{
   color:white;
-  padding:11px 17px;
-  border-radius:20px;
-  font-size:13px;
-  display:none;
-  z-index:200;
-}
-
-.toast.show{
-  display:block;
 }
 
 /* ================= MOBILE ================= */
@@ -958,89 +601,138 @@ button{
 @media(max-width:600px){
 
   .topbar{
-    height:55px;
+    padding:0 10px;
   }
 
   .top-brand{
-    font-size:21px;
+    font-size:19px;
+  }
+
+  .layout{
+    padding:10px 7px 85px;
   }
 
   .post{
-    margin:10px 0;
+    border-radius:12px;
+  }
+
+  .stories{
+    gap:12px;
+  }
+
+  .story{
+    min-width:68px;
+  }
+
+  .avatar-ring{
+    width:62px;
+    height:62px;
   }
 
   .reel{
-    height:calc(100vh - 115px);
-    min-height:450px;
+    border-radius:12px;
   }
 
+  .profile-head{
+    gap:14px;
+  }
+
+  .profile-head .avatar-ring{
+    width:78px;
+    height:78px;
+  }
+
+  .stats{
+    gap:14px;
+  }
+
+  .bottom{
+    height:68px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =====================================================
-     LOGIN
-====================================================== -->
+<!-- ================= LOGIN ================= -->
 
-<section id="login">
+<div id="login">
 
   <div class="login-card">
 
-    <div class="brand">PhotoShare</div>
+    <div class="logo">◎</div>
+
+    <div class="brand">
+      PhotoShare
+    </div>
+
+    <div class="subtitle">
+      Share your moments
+    </div>
 
     <input
-      id="loginName"
+      id="username"
       type="text"
       placeholder="Username or email"
       autocomplete="off"
     >
 
     <input
-      id="loginPassword"
+      id="password"
       type="password"
       placeholder="Password"
       autocomplete="off"
     >
 
-    <button class="login-button" onclick="login()">
+    <button
+      class="primary"
+      onclick="login()"
+    >
       Log In
     </button>
 
-    <div class="demo-text">
-      Demo interface. Login information is not sent anywhere.
+    <div class="demo">
+      Demo only — login information is not transmitted.
     </div>
 
   </div>
 
-</section>
+</div>
 
 
-<!-- =====================================================
-     APPLICATION
-====================================================== -->
+<!-- ================= APPLICATION ================= -->
 
-<section id="app" class="hidden">
+<div id="app" class="hidden">
 
   <!-- TOP BAR -->
 
   <header class="topbar">
 
     <div class="top-brand">
+
+      <div class="mini-logo">
+        ◎
+      </div>
+
       PhotoShare
+
     </div>
 
-    <div class="top-icons">
+    <div class="top-actions">
 
-      <button class="icon-btn"
-              onclick="openPage('search')">
-        🔍
+      <button
+        class="icon-btn"
+        onclick="showPage('search')"
+      >
+        ⌕
       </button>
 
-      <button class="icon-btn"
-              onclick="openPage('messages')">
-        💬
+      <button
+        class="icon-btn"
+        onclick="showPage('messages')"
+      >
+        ♡
       </button>
 
     </div>
@@ -1048,812 +740,301 @@ button{
   </header>
 
 
-  <!-- ===================================================
-       HOME
-  ==================================================== -->
+  <main class="layout">
 
-  <div id="home" class="page active">
+    <!-- ================= HOME ================= -->
 
-    <main class="feed">
+    <section
+      id="home"
+      class="page active"
+    >
 
-      <!-- STORIES -->
+      <div
+        id="stories"
+        class="stories"
+      ></div>
 
-      <div class="stories">
+      <div
+        id="feed"
+        class="feed"
+      ></div>
 
-        <div class="story" onclick="openStory(0)">
-
-          <div class="story-ring">
-
-            <div class="story-inner add-story">
-              +
-            </div>
-
-          </div>
-
-          Your story
-
-        </div>
+    </section>
 
 
-        <div class="story" onclick="openStory(1)">
+    <!-- ================= SEARCH ================= -->
 
-          <div class="story-ring">
+    <section
+      id="search"
+      class="page"
+    >
 
-            <div class="story-inner">
+      <div class="section-title">
+        Explore
+      </div>
 
-              <img src="https://picsum.photos/120/120?random=101">
+      <div class="searchbox">
 
-            </div>
-
-          </div>
-
-          alex
-
-        </div>
-
-
-        <div class="story" onclick="openStory(2)">
-
-          <div class="story-ring">
-
-            <div class="story-inner">
-
-              <img src="https://picsum.photos/120/120?random=102">
-
-            </div>
-
-          </div>
-
-          maya
-
-        </div>
-
-
-        <div class="story" onclick="openStory(3)">
-
-          <div class="story-ring">
-
-            <div class="story-inner">
-
-              <img src="https://picsum.photos/120/120?random=103">
-
-            </div>
-
-          </div>
-
-          rohan
-
-        </div>
-
-
-        <div class="story" onclick="openStory(4)">
-
-          <div class="story-ring">
-
-            <div class="story-inner">
-
-              <img src="https://picsum.photos/120/120?random=104">
-
-            </div>
-
-          </div>
-
-          sara
-
-        </div>
+        <input
+          id="searchInput"
+          placeholder="Search photos..."
+          oninput="searchPhotos()"
+        >
 
       </div>
 
+      <div
+        id="explore"
+        class="explore-grid"
+      ></div>
 
-      <!-- POST 1 -->
+    </section>
 
-      <article class="post">
 
-        <div class="post-head">
+    <!-- ================= REELS ================= -->
 
-          <img class="avatar"
-               src="https://picsum.photos/100/100?random=201">
+    <section
+      id="reels"
+      class="page"
+    >
 
-          <div>
+      <div class="section-title">
+        Reels
+      </div>
 
-            <div class="post-user">
-              alex_demo
-            </div>
+      <div
+        id="reelsList"
+        class="reels"
+      ></div>
 
-            <div class="post-location">
-              Hyderabad
-            </div>
+    </section>
 
-          </div>
 
-        </div>
+    <!-- ================= CREATE ================= -->
 
+    <section
+      id="create"
+      class="page"
+    >
 
-        <img class="post-img"
-             src="https://picsum.photos/800/800?random=301">
+      <div class="section-title">
+        Create Post
+      </div>
 
+      <div class="create">
 
-        <div class="actions">
+        <textarea
+          id="caption"
+          placeholder="Write a caption..."
+        ></textarea>
 
-          <button onclick="like(this)">
-            ♡
-          </button>
-
-          <button onclick="focusComment(this)">
-            💬
-          </button>
-
-          <button onclick="sharePost()">
-            ➤
-          </button>
-
-          <button class="save"
-                  onclick="savePost(this)">
-            ♡
-          </button>
-
-        </div>
-
-
-        <div class="likes">
-          <span>124</span> likes
-        </div>
-
-
-        <div class="caption">
-          <b>alex_demo</b>
-          Beautiful evening 🌅
-        </div>
-
-
-        <div class="comments">
-          View all 12 comments
-        </div>
-
-
-        <div class="comment-area">
-
-          <input
-            type="text"
-            placeholder="Add a comment..."
-          >
-
-          <button onclick="postComment(this)">
-            Post
-          </button>
-
-        </div>
-
-      </article>
-
-
-      <!-- POST 2 -->
-
-      <article class="post">
-
-        <div class="post-head">
-
-          <img class="avatar"
-               src="https://picsum.photos/100/100?random=202">
-
-          <div>
-
-            <div class="post-user">
-              maya_demo
-            </div>
-
-            <div class="post-location">
-              India
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <img class="post-img"
-             src="https://picsum.photos/800/800?random=302">
-
-
-        <div class="actions">
-
-          <button onclick="like(this)">
-            ♡
-          </button>
-
-          <button onclick="focusComment(this)">
-            💬
-          </button>
-
-          <button onclick="sharePost()">
-            ➤
-          </button>
-
-          <button class="save"
-                  onclick="savePost(this)">
-            ♡
-          </button>
-
-        </div>
-
-
-        <div class="likes">
-          <span>287</span> likes
-        </div>
-
-
-        <div class="caption">
-          <b>maya_demo</b>
-          Weekend vibes ✨
-        </div>
-
-
-        <div class="comments">
-          View all 24 comments
-        </div>
-
-
-        <div class="comment-area">
-
-          <input
-            type="text"
-            placeholder="Add a comment..."
-          >
-
-          <button onclick="postComment(this)">
-            Post
-          </button>
-
-        </div>
-
-      </article>
-
-
-      <!-- POST 3 -->
-
-      <article class="post">
-
-        <div class="post-head">
-
-          <img class="avatar"
-               src="https://picsum.photos/100/100?random=203">
-
-          <div>
-
-            <div class="post-user">
-              rohan_demo
-            </div>
-
-            <div class="post-location">
-              Travel
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <img class="post-img"
-             src="https://picsum.photos/800/800?random=303">
-
-
-        <div class="actions">
-
-          <button onclick="like(this)">
-            ♡
-          </button>
-
-          <button onclick="focusComment(this)">
-            💬
-          </button>
-
-          <button onclick="sharePost()">
-            ➤
-          </button>
-
-          <button class="save"
-                  onclick="savePost(this)">
-            ♡
-          </button>
-
-        </div>
-
-
-        <div class="likes">
-          <span>421</span> likes
-        </div>
-
-
-        <div class="caption">
-          <b>rohan_demo</b>
-          Exploring the world 🌍
-        </div>
-
-
-        <div class="comments">
-          View all 31 comments
-        </div>
-
-
-        <div class="comment-area">
-
-          <input
-            type="text"
-            placeholder="Add a comment..."
-          >
-
-          <button onclick="postComment(this)">
-            Post
-          </button>
-
-        </div>
-
-      </article>
-
-    </main>
-
-  </div>
-
-
-  <!-- ===================================================
-       REELS
-  ==================================================== -->
-
-  <div id="reels" class="page">
-
-    <main class="reels">
-
-
-      <div class="reel">
-
-        <img src="https://picsum.photos/600/1000?random=401">
-
-        <div class="reel-gradient"></div>
-
-        <div class="reel-info">
-
-          <h3>@travel_demo</h3>
-
-          <p>
-            Exploring beautiful places 🌎
-            <br>
-            #travel #reels #photography
-          </p>
-
-        </div>
-
-        <div class="reel-actions">
-
-          <button onclick="reelLike(this)">
-            ♡
-          </button>
-
-          <button onclick="toast('Comments opened')">
-            💬
-          </button>
-
-          <button onclick="sharePost()">
-            ➤
-          </button>
-
-          <button onclick="toast('Audio selected')">
-            ♪
-          </button>
-
-        </div>
+        <button
+          class="primary"
+          onclick="createPost()"
+        >
+          Publish Demo Post
+        </button>
 
       </div>
 
-
-      <div class="reel">
-
-        <img src="https://picsum.photos/600/1000?random=402">
-
-        <div class="reel-gradient"></div>
-
-        <div class="reel-info">
-
-          <h3>@city_demo</h3>
-
-          <p>
-            City lights ✨
-            <br>
-            #night #city #reels
-          </p>
-
-        </div>
-
-        <div class="reel-actions">
-
-          <button onclick="reelLike(this)">
-            ♡
-          </button>
-
-          <button onclick="toast('Comments opened')">
-            💬
-          </button>
-
-          <button onclick="sharePost()">
-            ➤
-          </button>
-
-          <button onclick="toast('Audio selected')">
-            ♪
-          </button>
-
-        </div>
-
-      </div>
+    </section>
 
 
-      <div class="reel">
+    <!-- ================= MESSAGES ================= -->
 
-        <img src="https://picsum.photos/600/1000?random=403">
+    <section
+      id="messages"
+      class="page"
+    >
 
-        <div class="reel-gradient"></div>
-
-        <div class="reel-info">
-
-          <h3>@nature_demo</h3>
-
-          <p>
-            Nature everywhere 🌿
-            <br>
-            #nature #reels
-          </p>
-
-        </div>
-
-        <div class="reel-actions">
-
-          <button onclick="reelLike(this)">
-            ♡
-          </button>
-
-          <button onclick="toast('Comments opened')">
-            💬
-          </button>
-
-          <button onclick="sharePost()">
-            ➤
-          </button>
-
-          <button onclick="toast('Audio selected')">
-            ♪
-          </button>
-
-        </div>
-
-      </div>
-
-    </main>
-
-  </div>
-
-
-  <!-- ===================================================
-       SEARCH
-  ==================================================== -->
-
-  <div id="search" class="page">
-
-    <div class="search-page">
-
-      <input
-        class="search-input"
-        id="searchInput"
-        placeholder="Search"
-        oninput="searchUsers()"
-      >
-
-      <div id="searchResults"></div>
-
-      <div class="search-grid">
-
-        <img src="https://picsum.photos/300/300?random=501">
-        <img src="https://picsum.photos/300/300?random=502">
-        <img src="https://picsum.photos/300/300?random=503">
-
-        <img src="https://picsum.photos/300/300?random=504">
-        <img src="https://picsum.photos/300/300?random=505">
-        <img src="https://picsum.photos/300/300?random=506">
-
-        <img src="https://picsum.photos/300/300?random=507">
-        <img src="https://picsum.photos/300/300?random=508">
-        <img src="https://picsum.photos/300/300?random=509">
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- ===================================================
-       MESSAGES
-  ==================================================== -->
-
-  <div id="messages" class="page">
-
-    <div class="messages">
-
-      <div class="messages-title">
+      <div class="section-title">
         Messages
       </div>
 
+      <div
+        id="messagesList"
+        class="messages"
+      ></div>
 
-      <div class="message"
-           onclick="openChat('Alex')">
+    </section>
 
-        <img src="https://picsum.photos/100/100?random=601">
 
-        <div>
+    <!-- ================= PROFILE ================= -->
 
-          <div class="message-name">
-            Alex
+    <section
+      id="profile"
+      class="page"
+    >
+
+      <div class="profile">
+
+        <div class="profile-head">
+
+          <div class="avatar-ring">
+
+            <img
+              class="avatar"
+              src="https://i.pravatar.cc/300?img=12"
+            >
+
           </div>
 
-          <div class="message-preview">
-            Hey! How are you?
-          </div>
+          <div>
 
-        </div>
+            <div
+              id="profileName"
+              class="profile-name"
+            >
+              Your Profile
+            </div>
 
-      </div>
+            <div class="stats">
 
+              <div>
+                <b>24</b>
+                <span>Posts</span>
+              </div>
 
-      <div class="message"
-           onclick="openChat('Maya')">
+              <div>
+                <b>1.2K</b>
+                <span>Followers</span>
+              </div>
 
-        <img src="https://picsum.photos/100/100?random=602">
+              <div>
+                <b>318</b>
+                <span>Following</span>
+              </div>
 
-        <div>
-
-          <div class="message-name">
-            Maya
-          </div>
-
-          <div class="message-preview">
-            Sent a photo
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="message"
-           onclick="openChat('Rohan')">
-
-        <img src="https://picsum.photos/100/100?random=603">
-
-        <div>
-
-          <div class="message-name">
-            Rohan
-          </div>
-
-          <div class="message-preview">
-            See you tomorrow
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="message"
-           onclick="openChat('Sara')">
-
-        <img src="https://picsum.photos/100/100?random=604">
-
-        <div>
-
-          <div class="message-name">
-            Sara
-          </div>
-
-          <div class="message-preview">
-            Nice! 🔥
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- ===================================================
-       NOTIFICATIONS
-  ==================================================== -->
-
-  <div id="notifications" class="page">
-
-    <div class="messages">
-
-      <div class="messages-title">
-        Notifications
-      </div>
-
-      <div class="message">
-
-        <img src="https://picsum.photos/100/100?random=701">
-
-        <div>
-          <b>alex_demo</b>
-          liked your post.
-          <div class="message-preview">
-            2 minutes ago
-          </div>
-        </div>
-
-      </div>
-
-
-      <div class="message">
-
-        <img src="https://picsum.photos/100/100?random=702">
-
-        <div>
-          <b>maya_demo</b>
-          started following you.
-          <div class="message-preview">
-            15 minutes ago
-          </div>
-        </div>
-
-      </div>
-
-
-      <div class="message">
-
-        <img src="https://picsum.photos/100/100?random=703">
-
-        <div>
-          <b>rohan_demo</b>
-          mentioned you in a comment.
-          <div class="message-preview">
-            1 hour ago
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- ===================================================
-       PROFILE
-  ==================================================== -->
-
-  <div id="profile" class="page">
-
-    <div class="profile">
-
-      <div class="profile-head">
-
-        <img
-          class="profile-avatar"
-          src="https://picsum.photos/200/200?random=801"
-        >
-
-        <div>
-
-          <div class="profile-name">
-            demo_user
-          </div>
-
-          <div class="stats">
-
-            <span>
-              <b>24</b><br>
-              Posts
-            </span>
-
-            <span>
-              <b>1.2K</b><br>
-              Followers
-            </span>
-
-            <span>
-              <b>320</b><br>
-              Following
-            </span>
+            </div>
 
           </div>
 
         </div>
 
+        <div class="bio">
+          PhotoShare demo account · Exploring moments ✨
+        </div>
+
+        <div
+          id="profileGrid"
+          class="profile-grid"
+        ></div>
+
       </div>
 
+    </section>
 
-      <button class="profile-button"
-              onclick="toast('Edit profile demo')">
-        Edit Profile
+  </main>
+
+
+  <!-- ================= BOTTOM NAV ================= -->
+
+  <nav class="bottom">
+
+    <div class="nav">
+
+      <button
+        data-page="home"
+        class="active"
+        onclick="showPage('home')"
+      >
+        <span>⌂</span>
+        Home
       </button>
 
+      <button
+        data-page="search"
+        onclick="showPage('search')"
+      >
+        <span>⌕</span>
+        Search
+      </button>
 
-      <div class="profile-grid">
+      <button
+        data-page="create"
+        onclick="showPage('create')"
+      >
+        <span>⊕</span>
+        Create
+      </button>
 
-        <img src="https://picsum.photos/300/300?random=901">
-        <img src="https://picsum.photos/300/300?random=902">
-        <img src="https://picsum.photos/300/300?random=903">
+      <button
+        data-page="reels"
+        onclick="showPage('reels')"
+      >
+        <span>▷</span>
+        Reels
+      </button>
 
-        <img src="https://picsum.photos/300/300?random=904">
-        <img src="https://picsum.photos/300/300?random=905">
-        <img src="https://picsum.photos/300/300?random=906">
+      <button
+        data-page="messages"
+        onclick="showPage('messages')"
+      >
+        <span>♡</span>
+        Messages
+      </button>
 
-      </div>
+      <button
+        data-page="profile"
+        onclick="showPage('profile')"
+      >
+        <span>♙</span>
+        Profile
+      </button>
 
     </div>
-
-  </div>
-
-
-  <!-- ===================================================
-       BOTTOM NAV
-  ==================================================== -->
-
-  <nav class="bottom-nav">
-
-    <button id="navHome"
-            class="active"
-            onclick="openPage('home')">
-      🏠
-    </button>
-
-    <button id="navSearch"
-            onclick="openPage('search')">
-      🔍
-    </button>
-
-    <button id="navReels"
-            onclick="openPage('reels')">
-      ▶
-    </button>
-
-    <button id="navMessages"
-            onclick="openPage('messages')">
-      💬
-    </button>
-
-    <button id="navProfile"
-            onclick="openPage('profile')">
-      👤
-    </button>
 
   </nav>
 
-</section>
-
-
-<!-- STORY VIEWER -->
-
-<div id="storyViewer" class="story-viewer">
-
-  <button class="close-story"
-          onclick="closeStory()">
-    ×
-  </button>
-
-  <img id="storyImage">
-
-</div>
-
-
-<!-- TOAST -->
-
-<div id="toast"
-     class="toast">
 </div>
 
 
 <script>
+
+/* =====================================================
+   PHOTO DATA
+===================================================== */
+
+const images = [
+
+"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=85",
+
+"https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1000&q=85",
+
+"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=85",
+
+"https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=85",
+
+"https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1000&q=85",
+
+"https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=1000&q=85",
+
+"https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1000&q=85",
+
+"https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1000&q=85",
+
+"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=85"
+
+];
+
+const people = [
+  "Your Story",
+  "User Tilly",
+  "Sam",
+  "Emma",
+  "Daniel",
+  "Christian"
+];
+
+const avatarIds = [
+  12,
+  32,
+  14,
+  47,
+  68,
+  5
+];
+
 
 /* =====================================================
    LOGIN
@@ -1861,250 +1042,71 @@ button{
 
 function login(){
 
-  var username =
-    document.getElementById("loginName").value.trim();
+  const username =
+    document
+    .getElementById("username")
+    .value
+    .trim();
 
-  if(username === ""){
+  if(username){
 
-    alert("Enter a demo username.");
+    document
+    .getElementById("profileName")
+    .textContent = username;
 
-    return;
   }
 
-  document.getElementById("login")
-    .classList.add("hidden");
+  document
+  .getElementById("login")
+  .classList
+  .add("hidden");
 
-  document.getElementById("app")
-    .classList.remove("hidden");
+  document
+  .getElementById("app")
+  .classList
+  .remove("hidden");
 
-  openPage("home");
+  showPage("home");
 }
 
 
 /* =====================================================
-   NAVIGATION
+   PAGE NAVIGATION
 ===================================================== */
 
-function openPage(page){
+function showPage(page){
 
-  var pages =
-    document.querySelectorAll(".page");
+  document
+  .querySelectorAll(".page")
+  .forEach(function(section){
 
-  pages.forEach(function(p){
-    p.classList.remove("active");
+    section.classList.remove("active");
+
   });
 
-  var selected =
+  const selected =
     document.getElementById(page);
 
   if(selected){
     selected.classList.add("active");
   }
 
+  document
+  .querySelectorAll(".nav button")
+  .forEach(function(button){
 
-  var navButtons =
-    document.querySelectorAll(".bottom-nav button");
+    button.classList.toggle(
+      "active",
+      button.dataset.page === page
+    );
 
-  navButtons.forEach(function(btn){
-    btn.classList.remove("active");
   });
 
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
-  var map = {
-    home:"navHome",
-    search:"navSearch",
-    reels:"navReels",
-    messages:"navMessages",
-    profile:"navProfile"
-  };
-
-
-  if(map[page]){
-
-    var nav =
-      document.getElementById(map[page]);
-
-    if(nav){
-      nav.classList.add("active");
-    }
-
-  }
-
-  window.scrollTo(0,0);
-}
-
-
-/* =====================================================
-   LIKE
-===================================================== */
-
-function like(button){
-
-  var post =
-    button.closest(".post");
-
-  var number =
-    post.querySelector(".likes span");
-
-  var value =
-    parseInt(number.textContent,10);
-
-
-  if(button.classList.contains("liked")){
-
-    button.classList.remove("liked");
-
-    button.textContent = "♡";
-
-    number.textContent =
-      Math.max(0,value-1);
-
-  }else{
-
-    button.classList.add("liked");
-
-    button.textContent = "♥";
-
-    number.textContent =
-      value+1;
-
-  }
-}
-
-
-/* =====================================================
-   SAVE
-===================================================== */
-
-function savePost(button){
-
-  if(button.textContent === "♡"){
-
-    button.textContent = "🔖";
-
-    toast("Post saved");
-
-  }else{
-
-    button.textContent = "♡";
-
-    toast("Post removed from saved");
-
-  }
-}
-
-
-/* =====================================================
-   REEL LIKE
-===================================================== */
-
-function reelLike(button){
-
-  if(button.classList.contains("liked")){
-
-    button.classList.remove("liked");
-
-    button.textContent = "♡";
-
-  }else{
-
-    button.classList.add("liked");
-
-    button.textContent = "♥";
-
-  }
-}
-
-
-/* =====================================================
-   COMMENTS
-===================================================== */
-
-function focusComment(button){
-
-  var post =
-    button.closest(".post");
-
-  var input =
-    post.querySelector(".comment-area input");
-
-  input.focus();
-}
-
-
-function postComment(button){
-
-  var area =
-    button.closest(".comment-area");
-
-  var input =
-    area.querySelector("input");
-
-  var value =
-    input.value.trim();
-
-
-  if(value === ""){
-
-    toast("Write a comment first");
-
-    return;
-  }
-
-
-  var comment =
-    document.createElement("div");
-
-  comment.style.padding =
-    "8px 12px";
-
-  comment.style.fontSize =
-    "14px";
-
-  var bold =
-    document.createElement("b");
-
-  bold.textContent =
-    "demo_user ";
-
-  comment.appendChild(bold);
-
-  comment.appendChild(
-    document.createTextNode(value)
-  );
-
-
-  area.parentNode.insertBefore(
-    comment,
-    area
-  );
-
-  input.value = "";
-
-  toast("Comment added");
-}
-
-
-/* =====================================================
-   SHARE
-===================================================== */
-
-function sharePost(){
-
-  if(
-    navigator.share
-  ){
-
-    navigator.share({
-      title:"PhotoShare",
-      text:"Check out this demo post."
-    }).catch(function(){});
-
-  }else{
-
-    toast("Share option opened");
-
-  }
 }
 
 
@@ -2112,177 +1114,506 @@ function sharePost(){
    STORIES
 ===================================================== */
 
-var storyImages = [
+function renderStories(){
 
-  "https://picsum.photos/900/1600?random=1001",
+  const stories =
+    document.getElementById("stories");
 
-  "https://picsum.photos/900/1600?random=1002",
+  stories.innerHTML = "";
 
-  "https://picsum.photos/900/1600?random=1003",
+  people.forEach(function(person,index){
 
-  "https://picsum.photos/900/1600?random=1004",
+    stories.innerHTML += `
 
-  "https://picsum.photos/900/1600?random=1005"
+      <div
+        class="story"
+        onclick="alert('Story opened: ${person}')"
+      >
 
-];
+        <div class="avatar-ring">
 
+          <img
+            class="avatar"
+            src="https://i.pravatar.cc/150?img=${avatarIds[index]}"
+          >
 
-function openStory(index){
+        </div>
 
-  var viewer =
-    document.getElementById("storyViewer");
+        ${person}
 
-  var image =
-    document.getElementById("storyImage");
+      </div>
 
-  image.src =
-    storyImages[index] ||
-    storyImages[0];
+    `;
 
-  viewer.classList.add("show");
+  });
+
 }
 
 
-function closeStory(){
+/* =====================================================
+   HOME POSTS
+===================================================== */
+
+function renderFeed(){
+
+  const feed =
+    document.getElementById("feed");
+
+  feed.innerHTML = `
+
+    <article class="post">
+
+      <div class="post-head">
+
+        <div class="avatar-ring">
+
+          <img
+            class="avatar"
+            src="https://i.pravatar.cc/150?img=23"
+          >
+
+        </div>
+
+        <div>
+
+          <div class="post-user">
+            alhdeco
+          </div>
+
+          <div class="post-time">
+            22m · PhotoShare
+          </div>
+
+        </div>
+
+        <button class="more">
+          •••
+        </button>
+
+      </div>
+
+      <img
+        class="post-img"
+        src="${images[0]}"
+      >
+
+      <div class="post-actions">
+
+        <button onclick="like(this)">
+          ♡
+        </button>
+
+        <button onclick="comment()">
+          ◯
+        </button>
+
+        <button onclick="sharePost()">
+          ➤
+        </button>
+
+        <button
+          class="save"
+          onclick="savePost(this)"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <div class="likes">
+        338 likes
+      </div>
+
+      <div class="caption">
+        <b>alhdeco</b>
+        Mountain evening — moments worth remembering ✨
+      </div>
+
+    </article>
+
+
+    <article class="post">
+
+      <div class="post-head">
+
+        <div class="avatar-ring">
+
+          <img
+            class="avatar"
+            src="https://i.pravatar.cc/150?img=44"
+          >
+
+        </div>
+
+        <div>
+
+          <div class="post-user">
+            Shimcich
+          </div>
+
+          <div class="post-time">
+            1h · PhotoShare
+          </div>
+
+        </div>
+
+        <button class="more">
+          •••
+        </button>
+
+      </div>
+
+      <img
+        class="post-img"
+        src="${images[4]}"
+      >
+
+      <div class="post-actions">
+
+        <button onclick="like(this)">
+          ♡
+        </button>
+
+        <button onclick="comment()">
+          ◯
+        </button>
+
+        <button onclick="sharePost()">
+          ➤
+        </button>
+
+        <button
+          class="save"
+          onclick="savePost(this)"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <div class="likes">
+        512 likes
+      </div>
+
+      <div class="caption">
+        <b>Shimcich</b>
+        A quiet golden hour 🌅
+      </div>
+
+    </article>
+
+  `;
+
+}
+
+
+/* =====================================================
+   EXPLORE
+===================================================== */
+
+function renderExplore(){
+
+  const explore =
+    document.getElementById("explore");
+
+  explore.innerHTML = "";
+
+  images.forEach(function(image,index){
+
+    explore.innerHTML += `
+
+      <div
+        class="tile"
+        data-search="photo ${index+1}"
+        onclick="openPhoto(${index})"
+      >
+
+        <img src="${image}">
+
+      </div>
+
+    `;
+
+  });
+
+}
+
+
+function searchPhotos(){
+
+  const query =
+    document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase();
 
   document
-    .getElementById("storyViewer")
-    .classList.remove("show");
+  .querySelectorAll(".tile")
+  .forEach(function(tile){
+
+    const text =
+      tile.dataset.search;
+
+    tile.style.display =
+      text.includes(query)
+      ? "block"
+      : "none";
+
+  });
+
+}
+
+
+function openPhoto(index){
+
+  alert(
+    "Photo " +
+    (index + 1) +
+    " opened in demo."
+  );
 
 }
 
 
 /* =====================================================
-   SEARCH
+   REELS
 ===================================================== */
 
-function searchUsers(){
+function renderReels(){
 
-  var input =
-    document.getElementById("searchInput");
+  const reels =
+    document.getElementById("reelsList");
 
-  var results =
-    document.getElementById("searchResults");
+  reels.innerHTML = "";
 
-  var value =
-    input.value.trim();
+  images.slice(2,6).forEach(function(image,index){
 
+    reels.innerHTML += `
 
-  if(value === ""){
+      <div class="reel">
 
-    results.innerHTML = "";
+        <img src="${image}">
 
-    return;
-  }
+        <div class="reel-overlay">
 
+          <b>@photoshare_creator</b>
 
-  var users = [
-    "alex_demo",
-    "maya_demo",
-    "rohan_demo",
-    "sara_demo",
-    "travel_demo",
-    "nature_demo"
-  ];
+          <br>
 
+          Beautiful moments
+          #PhotoShare
 
-  var matches =
-    users.filter(function(user){
-
-      return user
-        .toLowerCase()
-        .includes(value.toLowerCase());
-
-    });
-
-
-  if(matches.length === 0){
-
-    results.innerHTML =
-      "<p style='padding:15px;color:#777'>No users found</p>";
-
-    return;
-  }
-
-
-  results.innerHTML =
-    matches.map(function(user){
-
-      return `
-        <div style="
-          padding:13px;
-          border-bottom:1px solid #eee;
-          font-weight:bold;
-        ">
-          @${user}
         </div>
-      `;
 
-    }).join("");
+        <div class="reel-actions">
+
+          <button onclick="like(this)">
+            ♡
+          </button>
+
+          <button onclick="comment()">
+            ◯
+          </button>
+
+          <button onclick="sharePost()">
+            ➤
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
 
 }
 
 
 /* =====================================================
-   CHAT DEMO
+   MESSAGES
 ===================================================== */
+
+function renderMessages(){
+
+  const messages =
+    document.getElementById("messagesList");
+
+  messages.innerHTML = "";
+
+  people.slice(1).forEach(function(person,index){
+
+    messages.innerHTML += `
+
+      <div
+        class="chat"
+        onclick="openChat('${person}')"
+      >
+
+        <div class="avatar-ring">
+
+          <img
+            class="avatar"
+            src="https://i.pravatar.cc/150?img=${avatarIds[index+1]}"
+          >
+
+        </div>
+
+        <div>
+
+          <b>${person}</b>
+
+          <div class="last">
+            ${[
+              "That looks amazing!",
+              "See you soon ✨",
+              "Nice photo!",
+              "Sent a photo",
+              "Thank you!"
+            ][index]}
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+}
+
 
 function openChat(name){
 
-  toast("Opening chat with " + name);
-
-}
-
-
-/* =====================================================
-   TOAST
-===================================================== */
-
-var toastTimer = null;
-
-
-function toast(message){
-
-  var element =
-    document.getElementById("toast");
-
-  element.textContent =
-    message;
-
-  element.classList.add("show");
-
-
-  clearTimeout(toastTimer);
-
-
-  toastTimer =
-    setTimeout(function(){
-
-      element.classList.remove("show");
-
-    },1800);
-
-}
-
-
-/* =====================================================
-   KEYBOARD
-===================================================== */
-
-document
-  .getElementById("loginPassword")
-  .addEventListener(
-    "keydown",
-    function(event){
-
-      if(event.key === "Enter"){
-
-        login();
-
-      }
-
-    }
+  alert(
+    "Demo chat opened with " +
+    name
   );
+
+}
+
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+function renderProfile(){
+
+  const grid =
+    document.getElementById("profileGrid");
+
+  grid.innerHTML = "";
+
+  images.slice(0,6).forEach(function(image){
+
+    grid.innerHTML += `
+
+      <img src="${image}">
+
+    `;
+
+  });
+
+}
+
+
+/* =====================================================
+   CREATE POST
+===================================================== */
+
+function createPost(){
+
+  const caption =
+    document
+    .getElementById("caption")
+    .value
+    .trim();
+
+  if(!caption){
+
+    alert("Write a caption first.");
+
+    return;
+  }
+
+  alert(
+    "Demo post published!\n\n" +
+    caption
+  );
+
+  document
+  .getElementById("caption")
+  .value = "";
+
+  showPage("home");
+
+}
+
+
+/* =====================================================
+   ACTIONS
+===================================================== */
+
+function like(button){
+
+  if(button.textContent.trim() === "♡"){
+
+    button.textContent = "♥";
+
+  }else{
+
+    button.textContent = "♡";
+
+  }
+
+}
+
+
+function savePost(button){
+
+  if(button.textContent.trim() === "♡"){
+
+    button.textContent = "🔖";
+
+  }else{
+
+    button.textContent = "♡";
+
+  }
+
+}
+
+
+function comment(){
+
+  alert(
+    "Demo comment panel.\n" +
+    "This can be connected to a backend later."
+  );
+
+}
+
+
+function sharePost(){
+
+  alert(
+    "Demo share menu opened."
+  );
+
+}
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+renderStories();
+renderFeed();
+renderExplore();
+renderReels();
+renderMessages();
+renderProfile();
 
 </script>
 
