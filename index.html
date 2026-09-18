@@ -6,9 +6,7 @@
   <title>Social Login Security Demo</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -21,7 +19,7 @@
     }
 
     .card {
-      width: min(420px, 100%);
+      width: min(440px, 100%);
       padding: 28px 24px;
       background: white;
       border: 1px solid #ddd;
@@ -29,9 +27,7 @@
       box-shadow: 0 8px 30px rgba(0,0,0,.08);
     }
 
-    .center {
-      text-align: center;
-    }
+    .center { text-align: center; }
 
     .training {
       display: inline-block;
@@ -84,7 +80,8 @@
 
     .warning,
     .lesson,
-    .quiz {
+    .quiz,
+    .redflags {
       margin-top: 18px;
       padding: 16px;
       border-radius: 12px;
@@ -99,7 +96,28 @@
 
     .lesson {
       background: #f1f5f9;
-      line-height: 1.5;
+      line-height: 1.6;
+    }
+
+    .redflags {
+      background: #fff1f2;
+      line-height: 1.6;
+    }
+
+    .redflags h3 {
+      margin-top: 0;
+    }
+
+    .redflags li {
+      margin-bottom: 8px;
+    }
+
+    .safe-check {
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 8px;
+      background: white;
+      border: 1px solid #ddd;
     }
 
     .quiz {
@@ -239,12 +257,52 @@
       <h2>Simulation complete</h2>
 
       <p>
-        Nothing was transmitted or stored.
+        This exercise demonstrates why you should inspect a login request
+        before entering sensitive information.
       </p>
 
       <p>
-        Now test your phishing-awareness knowledge.
+        No credentials were transmitted or stored.
       </p>
+    </div>
+
+    <div class="redflags">
+
+      <h3>Phishing warning signs</h3>
+
+      <ul>
+        <li>
+          <strong>Unexpected request:</strong>
+          You did not expect the login message or link.
+        </li>
+
+        <li>
+          <strong>Suspicious address:</strong>
+          The website address does not match the legitimate service.
+        </li>
+
+        <li>
+          <strong>Urgency:</strong>
+          The message pressures you to act immediately.
+        </li>
+
+        <li>
+          <strong>Password request:</strong>
+          A page unexpectedly asks for sensitive information.
+        </li>
+
+        <li>
+          <strong>Unusual message:</strong>
+          Spelling, wording, or formatting may look inconsistent.
+        </li>
+      </ul>
+
+      <div class="safe-check">
+        <strong>Safe habit:</strong><br>
+        When in doubt, open the official service directly instead of
+        following an unexpected login link.
+      </div>
+
     </div>
 
     <div id="trainingLog" class="notice"></div>
@@ -304,6 +362,7 @@
     </div>
 
     <div class="score">
+
       <strong>Training score</strong>
 
       <div id="score">
@@ -313,6 +372,7 @@
       <p id="scoreMessage">
         Complete all three questions to see your training result.
       </p>
+
     </div>
 
     <div id="resultsSummary" class="results">
@@ -325,7 +385,7 @@
         <li>Check the website address before signing in.</li>
         <li>Do not reuse real passwords on unfamiliar pages.</li>
         <li>Verify unexpected login requests through the official service.</li>
-        <li>Use a password manager and unique passwords where appropriate.</li>
+        <li>Use unique passwords and appropriate security tools.</li>
       </ul>
 
       <p>
@@ -353,6 +413,7 @@
   const login = document.getElementById("login");
   const result = document.getElementById("result");
   const reset = document.getElementById("reset");
+
   const answers = document.querySelectorAll(".answer");
 
   const scoreDisplay = document.getElementById("score");
@@ -368,12 +429,13 @@
   const completed = new Set();
 
   form.addEventListener("submit", function(event) {
+
     event.preventDefault();
 
     /*
       SECURITY:
-      The username and password are never saved,
-      transmitted, logged, or sent to a server.
+      The username and password are deliberately not saved,
+      transmitted, logged, or sent to any server.
     */
 
     trainingLog.textContent =
@@ -404,7 +466,6 @@
       if (button.dataset.correct === "true") {
 
         score++;
-
         feedback.textContent = "Correct.";
 
       } else {
@@ -445,7 +506,9 @@
             "Training complete. Review the security lessons above.";
         }
       }
+
     });
+
   });
 
   reset.addEventListener("click", function() {
@@ -479,6 +542,7 @@
 
     result.style.display = "none";
     login.style.display = "block";
+
   });
 </script>
 
