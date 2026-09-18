@@ -19,13 +19,16 @@
     }
 
     .card {
-      width: min(440px, 100%);
+      width: min(460px, 100%);
       padding: 28px;
       background: white;
       border: 1px solid #ddd;
       border-radius: 20px;
-      text-align: center;
       box-shadow: 0 8px 30px rgba(0,0,0,.08);
+    }
+
+    .center {
+      text-align: center;
     }
 
     .badge {
@@ -41,6 +44,7 @@
     h1 {
       margin: 26px 0 12px;
       font-size: 34px;
+      text-align: center;
     }
 
     h2 {
@@ -81,16 +85,23 @@
       border-radius: 14px;
       background: #e8f5e9;
       color: #245b2a;
-      text-align: left;
+    }
+
+    .warning,
+    .exercise {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 12px;
     }
 
     .warning {
-      margin-top: 18px;
-      padding: 18px;
       background: #fff3cd;
-      border-radius: 12px;
       color: #664d03;
-      text-align: left;
+    }
+
+    .exercise {
+      background: #f1f5f9;
+      color: #333;
     }
 
     ul {
@@ -98,15 +109,7 @@
       line-height: 1.6;
     }
 
-    .exercise {
-      margin-top: 20px;
-      padding: 18px;
-      background: #f1f5f9;
-      border-radius: 14px;
-      text-align: left;
-    }
-
-    .url-example {
+    .url {
       display: block;
       margin: 12px 0;
       padding: 12px;
@@ -118,14 +121,31 @@
       font-size: 14px;
     }
 
+    .choice {
+      background: white;
+      color: #24292f;
+      border: 1px solid #ccc;
+    }
+
+    .feedback {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 10px;
+      background: #e8f5e9;
+      color: #245b2a;
+      display: none;
+    }
+
     .again {
       background: #555;
+      margin-top: 18px;
     }
 
     .notice {
       margin-top: 18px;
       font-size: 13px;
       color: #666;
+      text-align: center;
     }
   </style>
 </head>
@@ -134,30 +154,34 @@
 
 <main class="card">
 
-  <div class="badge">SECURITY AWARENESS DEMO</div>
+  <div class="center">
+    <div class="badge">SECURITY AWARENESS DEMO</div>
+  </div>
 
   <h1>Fictional Login</h1>
 
-  <p>
-    This is a controlled security-awareness simulation.
-    Use dummy information only.
-  </p>
+  <div id="login">
+    <p class="center">
+      This is a controlled security-awareness simulation.
+      Use dummy information only.
+    </p>
 
-  <form id="demo">
-    <input
-      type="text"
-      placeholder="Demo username"
-      autocomplete="off"
-    >
+    <form id="demo">
+      <input
+        type="text"
+        placeholder="Demo username"
+        autocomplete="off"
+      >
 
-    <input
-      type="password"
-      placeholder="Demo password"
-      autocomplete="off"
-    >
+      <input
+        type="password"
+        placeholder="Demo password"
+        autocomplete="off"
+      >
 
-    <button type="submit">Sign in</button>
-  </form>
+      <button type="submit">Sign in</button>
+    </form>
+  </div>
 
   <section id="result" class="result hidden">
 
@@ -169,38 +193,43 @@
     </p>
 
     <div class="warning">
-      <strong>Phishing red flags to check:</strong>
+      <strong>Phishing red flags:</strong>
 
       <ul>
         <li>Check the website address carefully.</li>
         <li>Be cautious with unexpected login requests.</li>
         <li>Watch for urgency or threats.</li>
         <li>Never share passwords or verification codes.</li>
-        <li>When unsure, use the service's official app or website.</li>
+        <li>When unsure, use the official app or website.</li>
       </ul>
     </div>
 
     <div class="exercise">
-      <h3>URL Awareness Exercise</h3>
+
+      <h2>URL Awareness Quiz</h2>
 
       <p>
-        Before entering credentials, identify the actual domain
-        in the address.
+        Which part of this fictional address is the actual domain?
       </p>
 
-      <span class="url-example">
-        https://example.com/account/login
+      <span class="url">
+        https://accounts.example.com/login
       </span>
 
-      <p>
-        In this example, <strong>example.com</strong> is the domain.
-        The rest is the path.
-      </p>
+      <button class="choice" data-answer="wrong">
+        /login
+      </button>
 
-      <p>
-        Don't assume a familiar-looking page is legitimate just
-        because it uses HTTPS or looks professional.
-      </p>
+      <button class="choice" data-answer="correct">
+        example.com
+      </button>
+
+      <button class="choice" data-answer="wrong">
+        https://
+      </button>
+
+      <div id="feedback" class="feedback"></div>
+
     </div>
 
     <button class="again" type="button" id="again">
@@ -218,20 +247,41 @@
 
 <script>
   const form = document.querySelector("#demo");
+  const login = document.querySelector("#login");
   const result = document.querySelector("#result");
   const again = document.querySelector("#again");
+  const choices = document.querySelectorAll(".choice");
+  const feedback = document.querySelector("#feedback");
 
   form.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    form.classList.add("hidden");
+    login.classList.add("hidden");
     result.classList.remove("hidden");
+  });
+
+  choices.forEach(function(button) {
+    button.addEventListener("click", function() {
+
+      feedback.style.display = "block";
+
+      if (button.dataset.answer === "correct") {
+        feedback.textContent =
+          "Correct. In this fictional example, example.com is the domain.";
+      } else {
+        feedback.textContent =
+          "Not quite. Look for the registered domain: example.com.";
+      }
+    });
   });
 
   again.addEventListener("click", function() {
     result.classList.add("hidden");
-    form.classList.remove("hidden");
+    login.classList.remove("hidden");
     form.reset();
+
+    feedback.style.display = "none";
+    feedback.textContent = "";
   });
 </script>
 
