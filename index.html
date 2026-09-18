@@ -138,6 +138,29 @@
       background: #eef2ff;
     }
 
+    .score p {
+      margin-bottom: 0;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .results {
+      display: none;
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 12px;
+      background: #f1f5f9;
+      line-height: 1.6;
+    }
+
+    .results h3 {
+      margin-top: 0;
+    }
+
+    .results ul {
+      padding-left: 20px;
+    }
+
     .reset {
       background: #555;
       margin-top: 18px;
@@ -282,7 +305,34 @@
 
     <div class="score">
       <strong>Training score</strong>
-      <div id="score">0 / 3</div>
+
+      <div id="score">
+        0 / 3
+      </div>
+
+      <p id="scoreMessage">
+        Complete all three questions to see your training result.
+      </p>
+    </div>
+
+    <div id="resultsSummary" class="results">
+
+      <h3>Training Results</h3>
+
+      <p id="finalScore"></p>
+
+      <ul>
+        <li>Check the website address before signing in.</li>
+        <li>Do not reuse real passwords on unfamiliar pages.</li>
+        <li>Verify unexpected login requests through the official service.</li>
+        <li>Use a password manager and unique passwords where appropriate.</li>
+      </ul>
+
+      <p>
+        <strong>Privacy:</strong>
+        This demonstration does not save or transmit passwords.
+      </p>
+
     </div>
 
     <button class="reset" type="button" id="reset">
@@ -304,37 +354,33 @@
   const result = document.getElementById("result");
   const reset = document.getElementById("reset");
   const answers = document.querySelectorAll(".answer");
+
   const scoreDisplay = document.getElementById("score");
+  const scoreMessage = document.getElementById("scoreMessage");
+
   const trainingLog = document.getElementById("trainingLog");
+  const resultsSummary = document.getElementById("resultsSummary");
+  const finalScore = document.getElementById("finalScore");
 
   let score = 0;
+  let answered = 0;
+
   const completed = new Set();
 
   form.addEventListener("submit", function(event) {
     event.preventDefault();
 
     /*
-      SECURITY NOTE:
-      The username and password are deliberately NOT saved,
-      transmitted, logged, or sent to any server.
+      SECURITY:
+      The username and password are never saved,
+      transmitted, logged, or sent to a server.
     */
 
-    const usernameField = document.getElementById("demoUsername");
-    const passwordField = document.getElementById("demoPassword");
+    trainingLog.textContent =
+      "Training event recorded locally: login simulation attempted. " +
+      "The password was not saved or transmitted.";
 
-    /*
-      We only record that a simulation was attempted.
-      The actual password value is never used.
-    */
-    if (usernameField.value.trim() !== "" ||
-        passwordField.value.trim() !== "") {
-
-      trainingLog.textContent =
-        "Training event recorded locally: login simulation attempted. " +
-        "The password was not saved or transmitted.";
-
-      trainingLog.style.display = "block";
-    }
+    trainingLog.style.display = "block";
 
     login.style.display = "none";
     result.style.display = "block";
@@ -353,6 +399,7 @@
       }
 
       completed.add(quiz);
+      answered++;
 
       if (button.dataset.correct === "true") {
 
@@ -363,7 +410,7 @@
       } else {
 
         feedback.textContent =
-          "Not quite. Review the security lesson and try the next question.";
+          "Not quite. Review the security lesson and continue.";
       }
 
       feedback.style.display = "block";
@@ -375,17 +422,43 @@
         item.disabled = true;
       });
 
-    });
+      if (answered === 3) {
 
+        resultsSummary.style.display = "block";
+
+        finalScore.textContent =
+          "Final score: " + score + " / 3.";
+
+        if (score === 3) {
+
+          scoreMessage.textContent =
+            "Training complete.";
+
+        } else if (score >= 2) {
+
+          scoreMessage.textContent =
+            "Training complete. Review the missed question.";
+
+        } else {
+
+          scoreMessage.textContent =
+            "Training complete. Review the security lessons above.";
+        }
+      }
+    });
   });
 
   reset.addEventListener("click", function() {
 
     score = 0;
+    answered = 0;
 
     completed.clear();
 
     scoreDisplay.textContent = "0 / 3";
+
+    scoreMessage.textContent =
+      "Complete all three questions to see your training result.";
 
     answers.forEach(function(button) {
       button.disabled = false;
@@ -399,11 +472,13 @@
     trainingLog.style.display = "none";
     trainingLog.textContent = "";
 
+    resultsSummary.style.display = "none";
+    finalScore.textContent = "";
+
     form.reset();
 
     result.style.display = "none";
     login.style.display = "block";
-
   });
 </script>
 
